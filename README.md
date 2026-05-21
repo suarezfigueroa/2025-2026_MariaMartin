@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="img/logo.png" alt="Logo TakeOne" width="180"/>
+<img src="doc/img/logo.png" alt="Logo TakeOne" width="180"/>
 
 # TakeOne
 
@@ -319,11 +319,11 @@ Ha sido utilizado como entorno de desarrollo local durante todo el proyecto, per
 
 #### 8.1.1. Diagrama E/R
 
-![Diagrama E/R](img/TakeOne Modelo E_R.drawio.png)
+![Diagrama E/R](doc/img/TakeOne-entidad-relacion.drawio.png)
 
 #### 8.1.2. Modelo Relacional
 
-![Modelo Relacional](img/Modelo_relacional_TakeOne.jpeg)
+![Modelo Relacional](doc/img/TakeOne-relacional.jpeg)
 
 La base de datos de TakeOne está compuesta por **26 tablas** que gestionan todas 
 las entidades y relaciones de la aplicación. A continuación se describen las 
@@ -403,40 +403,40 @@ La interfaz se caracteriza por:
 
 
 **Página de inicio**
-![Página de inicio](img/index.jpg)
-![Página de inicio 2](img/index2.jpeg)
+![Página de inicio](doc/img/index.jpg)
+![Página de inicio 2](doc/img/index2.jpeg)
 
 
 **Sección principal**
-![Sección principal - Cartelera](img/seccion-principal.jpeg)
+![Sección principal - Cartelera](doc/img/seccion-principal.jpeg)
 *Sliders de cartelera y próximos estrenos*
 
-![Sección principal - Noticias](img/seccion-principal-2.jpeg)
+![Sección principal - Noticias](doc/img/seccion-principal-2.jpeg)
 *Noticias destacadas*
 
 
-![Dropdown](img/dropdown.jpeg)
+![Dropdown](doc/img/dropdown.jpeg)
 
 
 **Detalle de película**
-![Detalle de película](img/detalle-pelicula.jpeg)
+![Detalle de película](doc/img/detalle-pelicula.jpeg)
 ![Detalle de película 2](img/detalle-pelicula-2.jpeg)
 
 
 **Sección Sugerir**
-![Sugerir](img/sugerir.jpeg)
+![Sugerir](doc/img/sugerir.jpeg)
 
 
 **Comunidad**
-![Comunidad](img/comunidad.jpeg)
+![Comunidad](doc/img/comunidad.jpeg)
 
 
 **Perfil de usuario**
-![Perfil](img/perfil.jpeg)
+![Perfil](doc/img/perfil.jpeg)
 
 
 **Panel de administración**
-![Panel admin](img/panel-admin.jpeg)
+![Panel admin](doc/img/panel-admin.jpeg)
 
 
 ---
@@ -612,7 +612,7 @@ HTTP 401 si el usuario no está autenticado.
 
 El proyecto está organizado con la siguiente estructura de carpetas:
 
-![Estructura de carpetas](img/Sistema-carpetas.png)
+![Estructura de carpetas](doc/img/Sistema-carpetas.png)
 
 ```
 📁 takeone/
@@ -805,4 +805,4 @@ registros de todas las tablas necesarios para que la aplicación funcione
 correctamente desde el primer arranque: géneros, plataformas, películas,
 usuarios de prueba, grupos, noticias y demás datos de ejemplo.
 
-📎 [Ver script SQL](datos_iniciales.sql)
+📎 [Ver script SQL](doc/datos_iniciales.sql)
