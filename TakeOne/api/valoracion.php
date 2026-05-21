@@ -54,4 +54,13 @@ $pdo->prepare("
     ON DUPLICATE KEY UPDATE valoracion = :v, fecha_estado = NOW()
 ")->execute([':u' => $idUsuario, ':p' => $idPelicula, ':v' => $valoracion]);
 
+// Registrar actividad (sustituye a trg_update_usuarios_peliculas para valoraciones)
+$pdo->prepare("
+    INSERT INTO actividad_usuario (id_usuario, tipo, descripcion)
+    VALUES (:id_usuario, 'valoracion', :descripcion)
+")->execute([
+    ':id_usuario'  => $idUsuario,
+    ':descripcion' => 'Película ID: ' . $idPelicula,
+]);
+
 echo json_encode(['success' => true, 'valoracion' => $valoracion]);

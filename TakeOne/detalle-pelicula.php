@@ -147,6 +147,14 @@
                     'comentario'  => $texto,
                     'es_spoiler'  => $esSpoiler
                 ]);
+                // Registrar actividad (sustituye al trigger trg_insert_comentario)
+                $pdo->prepare("
+                    INSERT INTO actividad_usuario (id_usuario, tipo, descripcion)
+                    VALUES (:id_usuario, 'comentario', :descripcion)
+                ")->execute([
+                    ':id_usuario'  => (int) $idUsuarioComentario,
+                    ':descripcion' => 'Película ID: ' . $id,
+                ]);
                 header("Location: detalle-pelicula.php?id=$id&comentado=1");
                 exit;
             } elseif (!$idUsuarioComentario) {

@@ -65,6 +65,15 @@ try {
                 'id_usuario' => (int)$idUsuario,
                 'id_pelicula' => $idPelicula
             ]);
+            // Registrar actividad (sustituye a trg_update_estado)
+            $pdo->prepare("
+                INSERT INTO actividad_usuario (id_usuario, tipo, descripcion)
+                VALUES (:id_usuario, :tipo, :descripcion)
+            ")->execute([
+                ':id_usuario'  => (int)$idUsuario,
+                ':tipo'        => $estado,
+                ':descripcion' => 'Película ID: ' . $idPelicula,
+            ]);
         }
     } else {
         if ($estado === '') {
@@ -83,6 +92,15 @@ try {
             'id_usuario' => (int)$idUsuario,
             'id_pelicula' => $idPelicula,
             'estado' => $estado
+        ]);
+        // Registrar actividad (sustituye a trg_insert_estado)
+        $pdo->prepare("
+            INSERT INTO actividad_usuario (id_usuario, tipo, descripcion)
+            VALUES (:id_usuario, :tipo, :descripcion)
+        ")->execute([
+            ':id_usuario'  => (int)$idUsuario,
+            ':tipo'        => $estado,
+            ':descripcion' => 'Película ID: ' . $idPelicula,
         ]);
     }
 
