@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TakeOne - Registrarse</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ff6347;
+        --primary-dark: #e5533d;
+        --background: #0f1419;
+        --card: #0f1419;
+        --card-light: rgba(255, 255, 255, 0.1);
+        --text: #e5e7eb;
+        --accent: #14b8a6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--background);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 2rem;
+        position: relative;
+      }
+
+      /* Fondo animado */
+      body::before {
+        content: "";
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(255, 99, 71, 0.262) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(20, 184, 165, 0.233) 0%,
+            transparent 50%
+          );
+        animation: rotate 50s linear infinite;
+        z-index: 0;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Container principal */
+      .auth-container {
+        position: relative;
+        z-index: 10;
+        max-width: 450px;
+        width: 100%;
+        background: var(--card-light);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 2rem;
+        padding: 2rem 2.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        margin: 0 auto;
+        margin-top: 7rem;
+      }
+
+      /* Logo y encabezado */
+      .auth-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .auth-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .auth-logo img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 9px;
+      }
+
+      .auth-logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .auth-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Campos de formulario */
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 0.5rem;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-wrapper > .material-icons-outlined {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.3rem;
+        pointer-events: none;
+      }
+
+      .form-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 1rem 1rem 1rem 3rem;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .form-input:focus {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+      }
+
+      .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Toggle password visibility */
+      .toggle-password {
+        position: absolute;
+        right: 0.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        margin-right: 40px;
+        justify-content: center;
+        transition: color 0.3s ease;
+        z-index: 5;
+      }
+
+      .toggle-password .material-icons-outlined {
+        position: static;
+        transform: none;
+        left: auto;
+        top: auto;
+        pointer-events: auto;
+        font-size: 1.3rem;
+      }
+
+      .toggle-password:hover {
+        color: var(--accent);
+      }
+
+      /* Password strength indicator */
+      .password-strength {
+        margin-top: 0.5rem;
+        display: none;
+      }
+
+      .strength-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+      }
+
+      .strength-bar-fill {
+        height: 100%;
+        width: 0%;
+        transition: all 0.3s ease;
+        border-radius: 3px;
+      }
+
+      .strength-bar-fill.weak {
+        width: 33%;
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+      }
+
+      .strength-bar-fill.medium {
+        width: 66%;
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+      }
+
+      .strength-bar-fill.strong {
+        width: 100%;
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+
+      .strength-text {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .strength-text.weak {
+        color: #ef4444;
+      }
+
+      .strength-text.medium {
+        color: #f59e0b;
+      }
+
+      .strength-text.strong {
+        color: #10b981;
+      }
+
+      /* Password requirements */
+      .password-requirements {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+      }
+
+      .requirements-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 0.75rem;
+      }
+
+      .requirements-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .requirements-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all 0.3s ease;
+      }
+
+      .requirements-list li .material-icons-outlined {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .requirements-list li.valid {
+        color: #10b981;
+      }
+
+      .requirements-list li.valid .material-icons-outlined {
+        color: #10b981;
+      }
+
+      /* Checkbox "Acepto términos" */
+      .form-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+      }
+
+      .form-checkbox input {
+        width: 1.25rem;
+        height: 1.25rem;
+        cursor: pointer;
+        accent-color: var(--accent);
+      }
+
+      .form-checkbox label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        margin: 0;
+      }
+
+      .form-checkbox label a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .form-checkbox label a:hover {
+        color: #0d9488;
+        text-decoration: underline;
+      }
+
+      /* Mensaje de error inline */
+      .error-msg {
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(239, 68, 68, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        color: #ef4444;
+        font-size: 0.9rem;
+        font-weight: 500;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .error-msg.visible {
+        display: flex;
+      }
+
+      .error-msg .material-icons-outlined {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Botón de submit */
+      .btn-submit {
+        width: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-3px);
+        background: white;
+        color: var(--primary-dark);
+      }
+
+      .btn-submit:active {
+        transform: translateY(-1px);
+      }
+
+      /* Link para cambiar a login */
+      .auth-switch {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .auth-switch a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .auth-switch a:hover {
+        color: #0d9488;
+        text-decoration: underline;
+      }
+
+      /* Enlace para volver al inicio */
+      .back-home {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        z-index: 100;
+      }
+
+      .btn-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(-5px);
+      }
+
+      /* Responsive */
+      @media (max-width: 576px) {
+        body {
+          padding: 1rem;
+        }
+
+        .auth-container {
+          padding: 2rem 1.5rem;
+        }
+
+        .auth-logo-text {
+          font-size: 1.5rem;
+        }
+
+        .auth-title {
+          font-size: 1.5rem;
+        }
+
+        .back-home {
+          top: 1rem;
+          left: 1rem;
+        }
+
+        .btn-back {
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Botón para volver al inicio -->
+    <div class="back-home">
+      <a href="index.php" class="btn-back">
+        <span class="material-icons-outlined">arrow_back</span>
+        <span>Volver al inicio</span>
+      </a>
+    </div>
+
+    <!-- Container de autenticación -->
+    <div class="auth-container">
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-logo">
+          <img src="img/logo gato sin fondo.png" alt="TakeOne Logo" />
+          <span class="auth-logo-text">TakeOne</span>
+        </div>
+        <h1 class="auth-title">¡Bienvenido!</h1>
+      </div>
+
+      <!-- Formulario de Registro -->
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="registerName">Nombre de usuario</label>
+          <div class="input-wrapper">
+            <span class="material-icons-outlined">person</span>
+            <input
+              type="text"
+              id="registerName"
+              name="username"
+              class="form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <div class="input-wrapper">
+            <span class="material-icons-outlined">email</span>
+            <input
+              type="email"
+              id="registerEmail"
+              name="email"
+              class="form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerPassword">Contraseña</label>
+          <div class="input-wrapper">
+            <span class="material-icons-outlined">lock</span>
+            <input
+              type="password"
+              id="registerPassword"
+              name="password"
+              class="form-input"
+              placeholder="Mínimo 8 caracteres"
+              required
+              minlength="8"
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              data-target="registerPassword"
+            >
+              <span class="material-icons-outlined">visibility_off</span>
+            </button>
+          </div>
+          <!-- Indicador de fortaleza -->
+          <div class="password-strength" id="passwordStrength">
+            <div class="strength-bar">
+              <div class="strength-bar-fill" id="strengthBarFill"></div>
+            </div>
+            <p class="strength-text" id="strengthText">Débil</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerPasswordConfirm">Confirmar contraseña</label>
+          <div class="input-wrapper">
+            <span class="material-icons-outlined">lock_outline</span>
+            <input
+              type="password"
+              id="registerPasswordConfirm"
+              class="form-input"
+              placeholder="Repite tu contraseña"
+              required
+              minlength="8"
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              data-target="registerPasswordConfirm"
+            >
+              <span class="material-icons-outlined">visibility_off</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Requisitos de contraseña -->
+        <div class="password-requirements">
+          <p class="requirements-title">La contraseña debe contener:</p>
+          <ul class="requirements-list">
+            <li id="req-length">
+              <span class="material-icons-outlined">cancel</span>
+              Al menos 8 caracteres
+            </li>
+            <li id="req-uppercase">
+              <span class="material-icons-outlined">cancel</span>
+              Una letra mayúscula
+            </li>
+            <li id="req-lowercase">
+              <span class="material-icons-outlined">cancel</span>
+              Una letra minúscula
+            </li>
+            <li id="req-number">
+              <span class="material-icons-outlined">cancel</span>
+              Un número
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="acceptTerms" required />
+          <label for="acceptTerms"
+            >Acepto los <a href="#">términos y condiciones</a></label
+          >
+        </div>
+
+        <!-- Mensaje de error inline -->
+        <div class="error-msg" id="errorMsg">
+          <span class="material-icons-outlined">error_outline</span>
+          <span id="errorText"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>Crear cuenta</span>
+        </button>
+      </form>
+
+      <!-- Link para ir a login -->
+      <div class="auth-switch">
+        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+      </div>
+    </div>
+
+    <script src="js/register.js"></script>
+  </body>
+</html>

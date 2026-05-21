@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TakeOne - Iniciar Sesión</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ff6347;
+        --primary-dark: #e5533d;
+        --background: #0f1419;
+        --card: #0f1419;
+        --card-light: rgba(255, 255, 255, 0.1);
+        --text: #e5e7eb;
+        --accent: #14b8a6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--background);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Fondo animado */
+      body::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(255, 99, 71, 0.262) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(20, 184, 165, 0.233) 0%,
+            transparent 50%
+          );
+        animation: rotate 50s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Container principal */
+      .auth-container {
+        position: relative;
+        z-index: 10;
+        max-width: 450px;
+        width: 100%;
+        background: var(--card-light);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 2rem;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Logo y encabezado */
+      .auth-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .auth-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .auth-logo img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 9px;
+      }
+
+      .auth-logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .auth-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Campos de formulario */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.936);
+        margin-bottom: 0.5rem;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-wrapper > .material-icons-outlined {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.3rem;
+        pointer-events: none;
+      }
+
+      .toggle-password .material-icons-outlined {
+        position: static;
+        transform: none;
+        pointer-events: auto;
+        font-size: 1.3rem;
+      }
+
+      .form-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 1rem 3.5rem 1rem 3rem;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .form-input:focus {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+      }
+
+      .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* para que al autocompletar el nombre o email no se ponga blanco */
+      .form-input:-webkit-autofill,
+      .form-input:-webkit-autofill:hover,
+      .form-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: white;
+        -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.08) inset;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      /* Toggle password visibility */
+      .toggle-password {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+        z-index: 5;
+      }
+
+      .toggle-password:hover {
+        color: var(--accent);
+      }
+
+      /* Checkbox "Recordarme" */
+      .form-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-checkbox input {
+        width: 1.25rem;
+        height: 1.25rem;
+        cursor: pointer;
+        accent-color: var(--accent);
+      }
+
+      .form-checkbox label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        margin: 0;
+      }
+
+      /* Enlace "¿Olvidaste tu contraseña?" */
+      .forgot-password {
+        text-align: right;
+        margin-top: -1rem;
+        margin-bottom: 1.3rem;
+      }
+
+      .forgot-password a {
+        color: white;
+        font-size: 0.9rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .forgot-password a:hover {
+        color: #0d9488;
+        text-decoration: underline;
+      }
+
+      .login-error {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 99, 71, 0.15);
+        border: 1px solid rgba(255, 99, 71, 0.4);
+        color: #ff6347;
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Botón de submit */
+      .btn-submit {
+        width: 100%;
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-3px);
+        background: white;
+        color: var(--accent);
+      }
+
+      .btn-submit:active {
+        transform: translateY(-1px);
+      }
+
+      /* Link para cambiar a registro */
+      .auth-switch {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+        margin-top: 2rem;
+      }
+
+      .auth-switch a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .auth-switch a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+
+      /* Enlace para volver al inicio */
+      .back-home {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 100;
+      }
+
+      .btn-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(-5px);
+      }
+
+      /* ── Modal "Olvidaste tu contraseña" ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(6px);
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal {
+        background: rgba(47, 49, 50, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1.5rem;
+        padding: 2.5rem 2rem;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        transform: translateY(20px) scale(0.97);
+        transition: transform 0.3s ease;
+      }
+
+      .modal-overlay.active .modal {
+        transform: translateY(0) scale(1);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        padding: 0.25rem;
+        display: flex;
+        transition: color 0.2s ease;
+      }
+
+      .modal-close:hover {
+        color: white;
+      }
+
+      .modal-desc {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.5;
+      }
+
+      .modal .form-input {
+        padding-left: 3rem;
+      }
+
+      .modal .input-wrapper {
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-modal-submit {
+        width: 100%;
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 0.9rem 2rem;
+        border-radius: 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-modal-submit:hover {
+        background: white;
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      /* ── Toast ── */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: #1a2030;
+        border: 1px solid rgba(20, 184, 166, 0.4);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        z-index: 300;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+        white-space: nowrap;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .toast-icon {
+        color: var(--accent);
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 576px) {
+        body {
+          padding: 1rem;
+        }
+
+        .auth-container {
+          padding: 2rem 1.5rem;
+        }
+
+        .auth-logo-text {
+          font-size: 1.5rem;
+        }
+
+        .auth-title {
+          font-size: 1.5rem;
+        }
+
+        .back-home {
+          top: 1rem;
+          left: 1rem;
+        }
+
+        .btn-back {
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Botón para volver al inicio -->
+    <div class="back-home">
+      <a href="index.php" class="btn-back">
+        <span class="material-icons-outlined">arrow_back</span>
+        <span>Volver al inicio</span>
+      </a>
+    </div>
+
+    <!-- Container de autenticación -->
+    <div class="auth-container">
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-logo">
+          <img src="img/logo gato sin fondo.png" alt="TakeOne Logo" />
+          <span class="auth-logo-text">TakeOne</span>
+        </div>
+        <h1 class="auth-title">¡Hola de nuevo!</h1>
+      </div>
+
+      <!-- Formulario de Login -->
+      <form id="loginForm" action="login.php" method="POST">
+        <div class="form-group">
+          <label for="loginUsername">Nombre de usuario o email</label>
+          <div class="input-wrapper">
+            <span class="material-icons-outlined">person</span>
+            <input
+              type="text"
+              id="loginUsername"
+              name="login"
+              class="form-input"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Contraseña</label>
+          <div class="input-wrapper">
+            <span class="material-icons-outlined">lock</span>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              class="form-input"
+              required
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              data-target="loginPassword"
+            >
+              <span class="material-icons-outlined">visibility_off</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe">Recordarme</label>
+        </div>
+
+        <div class="forgot-password">
+          <a href="#" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <div id="loginError" class="login-error" style="display: none">
+          <span class="material-icons-outlined">error_outline</span>
+          <span id="loginErrorMsg"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>Iniciar sesión</span>
+        </button>
+      </form>
+
+      <!-- Link para ir a registro -->
+      <div class="auth-switch">
+        ¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>
+      </div>
+    </div>
+
+    <!-- Modal: Olvidaste tu contraseña -->
+    <div class="modal-overlay" id="forgotModal">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Recuperar contraseña</h2>
+          <button class="modal-close" id="modalClose" aria-label="Cerrar">
+            <span class="material-icons-outlined">close</span>
+          </button>
+        </div>
+        <p class="modal-desc">
+          Introduce tu correo electrónico y te enviaremos un enlace para
+          restablecer tu contraseña.
+        </p>
+        <div class="input-wrapper">
+          <span class="material-icons-outlined">mail</span>
+          <input
+            type="email"
+            id="resetEmail"
+            class="form-input"
+            placeholder="tu@correo.com"
+            required
+          />
+        </div>
+        <button class="btn-modal-submit" id="sendResetBtn">
+          <span class="material-icons-outlined">send</span>
+          <span>Enviar enlace</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span class="material-icons-outlined toast-icon">mark_email_read</span>
+      <span>Se ha enviado un correo para cambiar la contraseña</span>
+    </div>
+
+    <script src="js/login.js"></script>
+    <script>
+      const forgotLink = document.getElementById("forgotPasswordLink");
+      const modal = document.getElementById("forgotModal");
+      const modalClose = document.getElementById("modalClose");
+      const sendBtn = document.getElementById("sendResetBtn");
+      const resetEmail = document.getElementById("resetEmail");
+      const toast = document.getElementById("toast");
+
+      function openModal() {
+        modal.classList.add("active");
+        setTimeout(() => resetEmail.focus(), 100);
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        resetEmail.value = "";
+      }
+
+      function showToast() {
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 4000);
+      }
+
+      forgotLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        openModal();
+      });
+      modalClose.addEventListener("click", closeModal);
+
+      // Cerrar al hacer clic fuera del modal
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Cerrar con Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active"))
+          closeModal();
+      });
+
+      sendBtn.addEventListener("click", () => {
+        if (!resetEmail.value || !resetEmail.validity.valid) {
+          resetEmail.focus();
+          return;
+        }
+        closeModal();
+        showToast();
+      });
+    </script>
+  </body>
+</html>
