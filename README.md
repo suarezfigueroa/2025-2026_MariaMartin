@@ -319,7 +319,7 @@ Ha sido utilizado como entorno de desarrollo local durante todo el proyecto, per
 
 #### 8.1.1. Diagrama E/R
 
-![Diagrama E/R](doc/img/TakeOne-entidad-relacion.drawio.png)
+![Diagrama E/R](doc/img/TakeOne-modelo-entidad.drawio.png)
 
 #### 8.1.2. Modelo Relacional
 
