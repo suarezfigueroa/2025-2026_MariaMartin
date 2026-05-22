@@ -715,8 +715,8 @@ InfinityFree y probando las principales funcionalidades.
 
 ## 11.  Manual de usuario — TakeOne
  
-- [Manual de usuario final](manual-usuario.md)
-- [Manual de administrador](manual-admin.md)
+- [Manual de usuario final](doc/manual-usuario.md)
+- [Manual de administrador](doc/manual-admin.md)
 
 
 
