@@ -181,14 +181,14 @@ relación tienen con el proyecto son:
 
 ### 6.2. Lenguajes de programación
 
-**HTML5 y CSS3**
-Utilizados para toda la parte visual de la aplicación. HTML5 estructura 
+**HTML5 y CSS3:**
+utilizados para toda la parte visual de la aplicación. HTML5 estructura 
 semánticamente el contenido de cada página, mientras que CSS3 se encarga 
 del diseño, los efectos visuales, las animaciones y la adaptación responsive 
 de la interfaz.
 
-**PHP**
-Lenguaje principal del backend. Se ha utilizado para:
+**PHP:**
+lenguaje principal del backend. Se ha utilizado para:
 - Operaciones CRUD sobre la base de datos.
 - Actualización de estados de películas (pendientes, favoritas, vistas).
 - Creación de endpoints para la comunicación con el frontend.
@@ -196,8 +196,8 @@ Lenguaje principal del backend. Se ha utilizado para:
 - Manejo y validación de formularios.
 - Consultas dinámicas integradas con SQL.
 
-**JavaScript**
-Lenguaje principal del frontend interactivo. Se ha utilizado para:
+**JavaScript:**
+lenguaje principal del frontend interactivo. Se ha utilizado para:
 - Manipulación del DOM y gestión de eventos.
 - Filtros dinámicos de contenido.
 - Chat en tiempo real.
@@ -205,8 +205,8 @@ Lenguaje principal del frontend interactivo. Se ha utilizado para:
 - Validación visual de los formularios de login y registro.
 - Sliders interactivos.
 
-**AJAX**
-Utilizado como pieza fundamental para la comunicación asíncrona entre el 
+**AJAX:**
+utilizado como pieza fundamental para la comunicación asíncrona entre el 
 frontend y el backend, permitiendo actualizar el contenido de la página sin 
 necesidad de recargar. Sus usos principales han sido:
 - Búsqueda instantánea de películas.
@@ -217,8 +217,8 @@ necesidad de recargar. Sus usos principales han sido:
 - Actualización de datos de usuario.
 - Interacción con listas y grupos.
 
-**SQL**
-Utilizado para todas las operaciones sobre la base de datos:
+**SQL:**
+utilizado para todas las operaciones sobre la base de datos:
 - Consultas de búsqueda, inserción, actualización y eliminación de datos.
 - Gestión de listas y favoritos.
 - Sistema de chats y mensajes.
