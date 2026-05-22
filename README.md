@@ -815,3 +815,6 @@ correctamente desde el primer arranque: géneros, plataformas, películas,
 usuarios de prueba, grupos, noticias y demás datos de ejemplo.
 
 📎 [Ver script SQL](doc/datos_iniciales.sql)
+
+
+
