@@ -814,7 +814,7 @@ registros de todas las tablas necesarios para que la aplicación funcione
 correctamente desde el primer arranque: géneros, plataformas, películas,
 usuarios de prueba, grupos, noticias y demás datos de ejemplo.
 
-📎 [Ver script SQL](doc/datos_iniciales.sql)
+📎 [Ver script SQL](doc/datos-iniciales.sql)
 
 
 

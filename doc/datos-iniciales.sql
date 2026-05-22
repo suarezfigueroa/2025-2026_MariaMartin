@@ -1,5 +1,29 @@
--- Script DML: Carga de datos iniciales de TakeOne
--- Generado desde phpMyAdmin
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: localhost
+-- Tiempo de generación: 22-05-2026 a las 12:00:35
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `takeone`
+--
+
+--
+-- Volcado de datos para la tabla `actividad_usuario`
+--
 
 INSERT INTO `actividad_usuario` (`id_actividad`, `id_usuario`, `tipo`, `descripcion`, `fecha`) VALUES
 (1, 1, 'favorita', 'Película ID: 73', '2026-04-22 09:37:57'),
@@ -51,11 +75,20 @@ INSERT INTO `actividad_usuario` (`id_actividad`, `id_usuario`, `tipo`, `descripc
 (47, 1, 'comentario', 'Película ID: 135', '2026-05-18 10:29:49'),
 (48, 1, 'comentario', 'Película ID: 135', '2026-05-18 10:35:28'),
 (49, 1, 'comentario', 'Película ID: 135', '2026-05-18 10:35:49'),
-(50, 1, 'comentario', 'Película ID: 10', '2026-05-18 11:00:24');
+(50, 1, 'comentario', 'Película ID: 10', '2026-05-18 11:00:24'),
+(51, 1, 'pendiente', 'Película ID: 169', '2026-05-21 10:43:43');
+
+--
+-- Volcado de datos para la tabla `amistades`
+--
 
 INSERT INTO `amistades` (`id_amistad`, `id_emisor`, `id_receptor`, `estado`, `fecha`) VALUES
 (1, 1, 2, 'aceptada', '2026-05-11 09:59:10'),
 (3, 1, 4, 'aceptada', '2026-05-11 12:28:30');
+
+--
+-- Volcado de datos para la tabla `comentarios_peliculas`
+--
 
 INSERT INTO `comentarios_peliculas` (`id_comentario`, `id_usuario`, `id_pelicula`, `comentario`, `fecha`, `es_spoiler`) VALUES
 (2, 1, 35, 'Comentario de prueba.', '2026-04-13 13:28:11', 0),
@@ -66,9 +99,17 @@ INSERT INTO `comentarios_peliculas` (`id_comentario`, `id_usuario`, `id_pelicula
 (14, 1, 135, 'Comentario de prueba.', '2026-05-18 10:35:49', 0),
 (15, 1, 10, 'yjntfgnjgth', '2026-05-18 11:00:24', 1);
 
+--
+-- Volcado de datos para la tabla `contacto`
+--
+
 INSERT INTO `contacto` (`id_contacto`, `nombre`, `email`, `motivo`, `fecha`, `id_usuario`, `leido`) VALUES
 (1, 'María Martín Vélez', 'maria@email.com', 'Formulario de prueba para comprobar funcionamiento.', '2026-04-22 10:13:02', 1, 1),
 (2, 'Prueba sin usuario', 'pruebasincuenta@email.com', 'Prueba con usuario sin cuenta.', '2026-04-22 10:14:38', NULL, 0);
+
+--
+-- Volcado de datos para la tabla `generos`
+--
 
 INSERT INTO `generos` (`id_genero`, `nombre`) VALUES
 (1, 'Acción'),
@@ -91,6 +132,10 @@ INSERT INTO `generos` (`id_genero`, `nombre`) VALUES
 (17, 'Thriller psicológico'),
 (12, 'Western');
 
+--
+-- Volcado de datos para la tabla `grupos`
+--
+
 INSERT INTO `grupos` (`id_grupo`, `nombre`, `descripcion`, `imagen`, `tipo`, `id_genero`, `id_usuario`, `fecha_creacion`) VALUES
 (1, 'Amantes del Terror Clásico', '¡Bienvenidos al rincón del terror!', 'img/grupo-terror.jpg', 'club-cine', 8, 2, '2026-04-22 13:49:28'),
 (2, 'De Pata Negra', 'El grupo perfecto para los fans del cine español.', 'img/grupo-pata-negra.jpeg', 'recomendaciones', NULL, 2, '2026-04-22 13:49:28'),
@@ -100,6 +145,10 @@ INSERT INTO `grupos` (`id_grupo`, `nombre`, `descripcion`, `imagen`, `tipo`, `id
 (6, 'Mundo Wes Anderson', 'Simetría, colores pastel y nostalgia.', 'img/grupo-wes.jpg', 'debates', 18, NULL, '2026-04-22 13:49:28'),
 (8, 'Grupo de prueba 2', 'tgrnjhgtyfrjnhgtfyjn', 'img/logo gato sin fondo.png', 'club-cine', NULL, 1, '2026-05-04 13:50:45');
 
+--
+-- Volcado de datos para la tabla `grupos_usuarios`
+--
+
 INSERT INTO `grupos_usuarios` (`id_grupo`, `id_usuario`, `ultimo_leido`) VALUES
 (1, 1, '2026-05-19 12:09:53'),
 (3, 1, '2026-05-19 12:09:53'),
@@ -107,6 +156,10 @@ INSERT INTO `grupos_usuarios` (`id_grupo`, `id_usuario`, `ultimo_leido`) VALUES
 (1, 2, '2026-05-19 12:09:53'),
 (1, 4, '2026-05-19 12:09:53'),
 (4, 4, '2026-05-19 12:09:53');
+
+--
+-- Volcado de datos para la tabla `historial_sugerencias`
+--
 
 INSERT INTO `historial_sugerencias` (`id_historial`, `id_usuario`, `id_pelicula`, `fecha`) VALUES
 (1, 1, 20, '2026-04-21 10:03:08'),
@@ -137,6 +190,10 @@ INSERT INTO `historial_sugerencias` (`id_historial`, `id_usuario`, `id_pelicula`
 (26, 1, 162, '2026-05-12 13:14:19'),
 (27, 1, 48, '2026-05-18 11:00:56');
 
+--
+-- Volcado de datos para la tabla `listas`
+--
+
 INSERT INTO `listas` (`id_lista`, `id_usuario`, `titulo`, `descripcion`, `imagen`, `fecha_creacion`, `visibilidad`) VALUES
 (1, 1, 'Para morir de risa', 'Las películas que me han hecho reír a lo largo de los años. Comedias imprescindibles para desconectar y disfrutar.', 'https://image.tmdb.org/t/p/original/v7Vpqyepu54v0chKrbLECYfg8Vk.jpg', '2026-04-07 11:55:31', 'publica'),
 (2, 2, 'Clásicos que no puedes perderte', 'Películas esenciales que todo amante del cine debería ver al menos una vez en la vida.', 'https://wearekikazaru.com/wp-content/uploads/2021/09/image.jpeg', '2026-04-07 12:48:46', 'publica'),
@@ -148,12 +205,20 @@ INSERT INTO `listas` (`id_lista`, `id_usuario`, `titulo`, `descripcion`, `imagen
 (11, 4, 'Dibujitos monos', 'Esta es una lista de dibujitos', 'https://i.blogs.es/4b7078/650_1000_nemo1/650_1200.jpg', '2026-04-12 15:00:11', 'publica'),
 (12, 1, 'Lista de prueba', 'Esta lista es de prueba', 'img/lista-default.jpg', '2026-05-04 12:29:33', 'publica');
 
+--
+-- Volcado de datos para la tabla `listas_likes`
+--
+
 INSERT INTO `listas_likes` (`id_lista`, `id_usuario`) VALUES
 (3, 2),
 (4, 4),
 (5, 1),
 (5, 4),
 (11, 1);
+
+--
+-- Volcado de datos para la tabla `listas_peliculas`
+--
 
 INSERT INTO `listas_peliculas` (`id_lista`, `id_pelicula`) VALUES
 (1, 42),
@@ -202,6 +267,10 @@ INSERT INTO `listas_peliculas` (`id_lista`, `id_pelicula`) VALUES
 (7, 84),
 (12, 142);
 
+--
+-- Volcado de datos para la tabla `mensajes_grupo`
+--
+
 INSERT INTO `mensajes_grupo` (`id_mensaje`, `id_grupo`, `id_usuario`, `mensaje`, `fecha`, `estado`) VALUES
 (1, 1, 1, 'Mensaje editado de prueba', '2026-04-23 11:08:46', 'activo'),
 (2, 1, 2, 'Hola desde otro usuario', '2026-04-23 11:09:55', 'activo'),
@@ -212,6 +281,10 @@ INSERT INTO `mensajes_grupo` (`id_mensaje`, `id_grupo`, `id_usuario`, `mensaje`,
 (7, 1, 1, 'probando mensaje a la derecha al enviar', '2026-04-24 13:16:34', 'activo'),
 (8, 1, 1, 'rghbrthbtfrh', '2026-05-06 12:49:24', 'activo'),
 (9, 1, 1, 'fgnmfhmmgb', '2026-05-18 11:01:36', 'activo');
+
+--
+-- Volcado de datos para la tabla `mensajes_privados`
+--
 
 INSERT INTO `mensajes_privados` (`id_mensaje`, `id_emisor`, `id_receptor`, `mensaje`, `leido`, `fecha`, `estado`) VALUES
 (1, 1, 2, 'Holaaaa', 1, '2026-05-07 13:27:15', 'activo'),
@@ -226,8 +299,16 @@ INSERT INTO `mensajes_privados` (`id_mensaje`, `id_emisor`, `id_receptor`, `mens
 (10, 1, 2, 'Hola!', 1, '2026-05-11 12:09:09', 'activo'),
 (11, 2, 1, 'Holaaa', 1, '2026-05-11 12:09:44', 'activo');
 
+--
+-- Volcado de datos para la tabla `moderacion_comentarios`
+--
+
 INSERT INTO `moderacion_comentarios` (`id`, `id_comentario`, `id_usuario`, `id_pelicula`, `comentario_texto`, `motivo`, `fecha`) VALUES
 (1, 4, 1, 10, 'tjhnfrtgjrfjkmxgtf', 'insultos', '2026-05-13 12:21:58');
+
+--
+-- Volcado de datos para la tabla `noticias`
+--
 
 INSERT INTO `noticias` (`id_noticia`, `titulo`, `descripcion`, `contenido`, `imagen`, `autor`, `fecha`, `id_usuario`) VALUES
 (1, '\'The Batman Part II\': todo lo que sabemos del regreso de Pattinson.', 'Matt Reeves retoma su épica saga criminal de Gotham con una secuela que promete ser \"muy diferente\" y arrancar el rodaje en Londres en junio de 2026.', 'Warner Bros. tiene fecha: el 1 de octubre de 2027 llegará a los cines The Batman Part II, la esperada secuela de Matt Reeves que continuará la historia de Robert Pattinson como Bruce Wayne. Tras años de retrasos provocados por la huelga de guionistas y actores de Hollywood, el proyecto ha recuperado por fin un calendario firme de producción.\r\n\r\nEl guión que lo cambia todo\r\n\r\nEl propio Pattinson ha roto su habitual hermetismo para compartir su entusiasmo con la película. En declaraciones recogidas por Deadline en marzo de 2026, el actor ha asegurado que la secuela va a ser \"muy, muy especial y muy diferente\", y que el guion \"se está arriesgando en grande\".\r\n\r\nColin Farrell, que da vida al Pingüino, ha sido igualmente elogioso con el trabajo de Reeves: ha calificado el guion de \"obra maestra contemporánea del género\", destacando que es denso, inteligente y profundo, y que el viaje que aguarda al personaje de Pattinson será extraordinario.\r\n\r\n[IMG:img/noticias/noticia-batman-1.jpg]\r\n\r\nUn rodaje en Londres\r\n\r\nEl rodaje comenzará en junio de 2026 en Londres, según ha confirmado Deadline. La producción contará con el regreso de los actores principales: además de Pattinson y Farrell, Andy Serkis retomará su papel como Alfred Pennyworth tras resolver el conflicto de agenda con el rodaje de El señor de los anillos: La caza de Gollum. Jeffrey Wright también repite como el teniente Jim Gordon.\r\n\r\nIncorporaciones de peso al reparto\r\n\r\nLas novedades en el reparto apuntan a fichajes de primer nivel. Scarlett Johansson negocia un papel aún no desvelado, mientras que Sebastian Stan está en conversaciones para unirse al proyecto. Los rumores sobre el villano principal apuntan a Harvey Dent como figura central, aunque el estudio no ha confirmado ningún nombre para ese rol.\r\n\r\n[IMG:img/noticias/noticia-batman-2.jpg]\r\n\r\nUna trilogía con identidad propia\r\n\r\nLa película se enmarca en el universo propio de Reeves, The Batman Epic Crime Saga, al margen del DCU de James Gunn. El director ha dejado claro que su intención es completar una trilogía, y que esta segunda entrega construirá directamente sobre el colapso de Gotham y la evolución de Bruce Wayne tras los eventos de la primera película y la serie The Penguin de HBO.\r\n\r\nCon un primer film que recaudó más de 772 millones de dólares en todo el mundo, las expectativas para la secuela son enormes. Aunque el tráiler oficial no se espera hasta principios de 2027, la avalancha de noticias sobre el casting y las declaraciones del reparto mantienen el interés de los fans en su punto más alto.', 'img/noticias/batman2.jpg', 'Redacción TakeOne', '2026-04-17 09:00:00', 3),
@@ -241,6 +322,10 @@ INSERT INTO `noticias` (`id_noticia`, `titulo`, `descripcion`, `contenido`, `ima
 (9, 'La princesa Mononoke: la obra maestra de Miyazaki que cambió la animación para siempre', 'Estrenada en 1997, la película de Studio Ghibli rompió todos los récords de taquilla en Japón, planteó una reflexión sin precedentes sobre el conflicto entre la naturaleza y el progreso, y consolidó a Hayao Miyazaki como uno de los grandes cineastas de la historia.', 'Cuando La princesa Mononoke se estrenó en Japón el 12 de julio de 1997, nadie esperaba lo que ocurrió. La película recaudó más de 160 millones de dólares y desbancó a E.T. como la cinta más taquillera de la historia del país, un récord que ostentaba desde 1983. Para Studio Ghibli y para Hayao Miyazaki, que había anunciado su retirada antes del estreno, supuso una consagración definitiva ante el mundo.\r\n\r\nUna historia entre la naturaleza y el progreso\r\n\r\nAmbientada en el Japón del período Muromachi, la película sigue al joven guerrero Ashitaka, maldito tras defender su aldea de un dios jabalí corrompido por el odio. Su viaje lo lleva al corazón de un bosque sagrado donde conviven dioses animales y la joven San —la princesa Mononoke—, criada por lobos, en guerra abierta contra los humanos que explotan sus recursos. Miyazaki no quiso retratar un Japón medieval preciso, sino capturar el inicio del conflicto entre la naturaleza y la civilización industrial moderna. La película se apoya en la mitología sintoísta —con sus kami, sus Kodama y sus dioses del bosque— para construir un relato donde ningún bando tiene razón absoluta y donde la codicia humana convive con la capacidad de redención.\r\n\r\n[IMG:img/noticias/noticia-princesa-mononoke-1.png]\r\n\r\nUna animación que no envejece\r\n\r\nLa princesa Mononoke fue el primer largometraje de Miyazaki en incorporar herramientas digitales, aunque de forma muy limitada: apenas 170 de sus más de 144.000 fotogramas fueron realizados por ordenador. El resultado es una animación que mezcla la precisión artesanal de Ghibli con paisajes de una belleza casi hipnótica, inspirados en los bosques de la isla de Yakushima. La banda sonora de Joe Hisaishi acompaña cada secuencia con una partitura que amplifica la épica y la melancolía del relato. Críticos y espectadores coinciden: a casi treinta años de su estreno, la película no ha perdido ni un gramo de su fuerza.\r\n\r\n[IMG:img/noticias/noticia-princesa-mononoke-2.jpg]\r\n\r\nEl legado de una obra sin igual\r\n\r\nLa princesa Mononoke es, para muchos, la película más desafiante e importante de toda la filmografía de Miyazaki. Con ella, el director volcó sus reflexiones sobre la historia, la crisis medioambiental y la dificultad de sobrevivir en un mundo contradictorio. La WWF la incluyó entre sus obras recomendadas por su mensaje ecologista. Y aunque El viaje de Chihiro acabaría superando sus cifras de taquilla años después, ninguna otra película de Ghibli ha vuelto a alcanzar la densidad temática y la ambición narrativa de esta historia de bosques, dioses y guerreros que todavía hoy sigue siendo una carta abierta del cineasta al mundo.', 'img/noticias/princesa-mononoke.jpg', 'Redacción TakeOne', '2026-04-08 10:00:00', 3),
 (10, '\'Vengadores: Doomsday\' llega en diciembre con Robert Downey Jr. como villano y los hermanos Russo al mando', 'Marvel apuesta por su regreso más ambicioso: el UCM reúne a sus héroes más icónicos frente a la mayor amenaza del multiverso en la esperada quinta entrega de los Vengadores.', 'Después de varios años de un Marvel dividido entre series, proyectos de autor y blockbusters de resultado desigual, el estudio vuelve a la carga con su apuesta más grande desde Avengers: Endgame. Vengadores: Doomsday llega a los cines el 18 de diciembre de 2026 y promete ser el acontecimiento cinematográfico del año.\r\n\r\nDe qué va Vengadores: Doomsday\r\n\r\nLa película arranca donde el UCM nunca había llegado: el multiverso como campo de batalla total. Doctor Doom, encarnado por un sorprendente Robert Downey Jr. en un rol completamente distinto al de Tony Stark, emerge como la amenaza definitiva para todas las realidades conocidas. Vengadores, Wakandanos, los Cuatro Fantásticos, los Nuevos Vengadores y los X-Men convergen desde universos distintos para hacer frente a un enemigo que los supera a todos.\r\n\r\n[IMG:img/noticias/noticia-doomsday-1.png]\r\n\r\nUn reparto histórico para el UCM\r\n\r\nLa película reúne a Chris Hemsworth, Chris Evans —que regresa como Capitán América con uno de los giros más comentados del tráiler—, Pedro Pascal, Vanessa Kirby, Joseph Quinn y Anthony Mackie, entre muchos otros. El regreso de los hermanos Anthony y Joe Russo a la dirección, con guion de Michael Waldron y Stephen McFeely, ha devuelto la confianza al fandom tras años de resultados irregulares.\r\n\r\nEl rodaje arrancó en abril de 2025 en los Pinewood Studios de Inglaterra y finalizó en septiembre, con exteriores adicionales rodados en Baréin. Marvel y Disney han guardado la trama bajo un estricto secreto, aunque las primeras proyecciones en el CinemaCon de abril de 2026 generaron una respuesta entusiasta que ha vuelto a encender la expectación.\r\n\r\n[IMG:img/noticias/noticia-doomsday-2.jpg]\r\n\r\nEstreno y lo que viene después\r\n\r\nVengadores: Doomsday llegará a los cines el 18 de diciembre de 2026, distribuida por Walt Disney Studios. Será la película número 39 del UCM y la primera de las dos entregas que conforman la Fase Seis, ya que su secuela directa, Avengers: Secret Wars, está prevista para diciembre de 2027. Todo apunta a que Marvel se juega en estas dos películas el futuro entero de su universo cinematográfico.', 'img/noticias/doomsday-noticias.jpeg', 'Redacción TakeOne', '2026-04-07 09:30:00', 3),
 (11, 'CinemaCon 2026: el primer tráiler de \'Vengadores: Doomsday\', \'Top Gun 3\' y todos los grandes anuncios del cine', 'Los grandes estudios de Hollywood presentaron sus apuestas más ambiciosas ante más de seis mil exhibidores de todo el mundo.', 'Del 13 al 16 de abril, el Caesars Palace de Las Vegas acogió una nueva edición de la CinemaCon, el evento anual donde Hollywood le muestra al mundo de la exhibición lo que tiene preparado para los próximos meses. La edición de 2026 ha sido una de las más comentadas en años, impulsada por el primer tráiler de Vengadores: Doomsday y una avalancha de anuncios que han encendido las redes sociales.\r\n\r\nEl momento del año: el tráiler de Vengadores: Doomsday\r\n\r\nDisney cerró el evento con la presentación más esperada. Marvel mostró nuevo metraje de Vengadores: Doomsday —dirigida por los hermanos Russo y protagonizada por Robert Downey Jr. como Doctor Doom— que dejó a los exhibidores en pie. Las imágenes incluyeron a Thor enfrentándose a Doctor Doom, el regreso de Steve Rogers y una secuencia con el Profesor X presenciando una incursión multiversal. También se confirmaron entradas a la venta para The Mandalorian y Grogu, y se mostraron avances de Toy Story 5 y la secuela de El diablo viste de Prada.\r\n\r\n[IMG:img/noticias/noticia-cinemacon-1.jpg]\r\n\r\nLos otros grandes anuncios por estudio\r\n\r\nParamount protagonizó otra de las presentaciones más aplaudidas. Tom Cruise confirmó su regreso para Top Gun 3, y el estudio también anunció Guerra Mundial Z 2 y Un lugar en silencio 3. El actor Johnny Depp vuelve a las grandes producciones con Ebenezer: A Christmas Carol. Sony, por su parte, mostró nuevo material de Spider-Man: Brand New Day con Tom Holland y confirmó que Spider-Man: Beyond the Spider-Verse avanza sin contratiempos. StudioCanal sorprendió con el anuncio de Paddington 4 en desarrollo, un reboot de Escape from New York y una adaptación de Pippi Långstrump en imagen real.\r\n\r\n[IMG:img/noticias/noticia-cinemacon-2.png]\r\n\r\nUna industria que apuesta por las salas\r\n\r\nMás allá de los títulos concretos, la CinemaCon 2026 dejó un mensaje claro: Hollywood sigue creyendo en la experiencia cinematográfica en sala frente al avance del streaming y la inteligencia artificial. Con más de seis mil profesionales llegados de más de sesenta países, el evento reafirmó su papel como el principal escaparate de la industria y anticipa un segundo semestre de 2026 cargado de grandes estrenos.', 'img/noticias/cinemacon.jpg', 'Redacción TakeOne', '2026-04-06 10:00:00', 3);
+
+--
+-- Volcado de datos para la tabla `peliculas`
+--
 
 INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `duracion`, `pais`, `sinopsis`, `imdb`, `poster`, `backdrop`, `trailer_url`, `director`, `guionistas`, `productora`) VALUES
 (1, 'Dune: Parte Dos', 'Dune: Part Two', 2024, 166, 'Estados Unidos', 'Paul Atreides se une a los Fremen en su guerra contra los Harkonnen, mientras intenta evitar el terrible futuro que solo él puede prever.', 8.5, 'https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg', 'https://image.tmdb.org/t/p/original/24Ov8wnusgnzXwjV1eDm0Lzo5da.jpg', 'https://www.youtube.com/watch?v=Way9Dexny3w', 'Denis Villeneuve', 'Denis Villeneuve, Jon Spaihts', 'Legendary Pictures'),
@@ -339,7 +424,6 @@ INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `du
 (100, 'No es país para viejos', 'No Country for Old Men', 2007, 122, 'Estados Unidos', 'Un cazador de Texas encuentra por casualidad los restos de una operación de narcotráfico y dos millones de dólares en efectivo. Pronto es perseguido por un implacable asesino a sueldo.', 8.2, 'https://media.themoviedb.org/t/p/w600_and_h900_face/x9sQnOXhvec93L6cfWMGIx7BS4h.jpg', 'https://image.tmdb.org/t/p/original/n7LXYfhGS89ZRMj8YaB9vRtQTpu.jpg', 'https://www.youtube.com/watch?v=38A__WT3-o0', 'Joel Coen, Ethan Coen', 'Joel Coen, Ethan Coen', 'Miramax, Paramount Vantage'),
 (101, 'Moonlight', 'Moonlight', 2016, 111, 'Estados Unidos', 'En tres actos, la película sigue a Chiron, un joven afroamericano de Miami que crece en un barrio marginal y descubre su identidad y sexualidad entre la violencia y la pobreza.', 7.4, 'https://media.themoviedb.org/t/p/w600_and_h900_face/4911T5FbJ9eD2Faz5Z8cT3SUhU3.jpg', 'https://image.tmdb.org/t/p/original/A9KPbYTQvWsp51Lgz85ukVkFrKf.jpg', 'https://www.youtube.com/watch?v=9NJj12tJzqc', 'Barry Jenkins', 'Barry Jenkins', 'A24, Plan B Entertainment'),
 (102, 'Gravity', 'Gravity', 2013, 91, 'Estados Unidos', 'Dos astronautas quedan a la deriva en el espacio tras un accidente que destruye su nave. La lucha por sobrevivir en el entorno más hostil conocido por el ser humano.', 7.7, 'https://media.themoviedb.org/t/p/w600_and_h900_face/3CKbEXrw88LNvBU3baISh1I7JP4.jpg', 'https://image.tmdb.org/t/p/original/131lKbxFcAvNALpWX9uodjqckLU.jpg', 'https://www.youtube.com/watch?v=OiTiKOy59o4', 'Alfonso Cuarón', 'Alfonso Cuarón, Jonás Cuarón', 'Warner Bros., Esperanto Filmoj');
-
 INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `duracion`, `pais`, `sinopsis`, `imdb`, `poster`, `backdrop`, `trailer_url`, `director`, `guionistas`, `productora`) VALUES
 (103, 'Mad Max: Furia en la carretera', 'Mad Max: Fury Road', 2015, 120, 'Australia', 'En un futuro postapocalíptico, el solitario Max se alía con la impetuosa Furiosa para huir de un tirano del desierto y salvar a un grupo de mujeres esclavizadas.', 8.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/fnY0VRsb31A5RLVCBjuR6EFUlo2.jpg', 'https://image.tmdb.org/t/p/original/8yACFuo4OaIiKr9hHFlmPcGalKx.jpg', 'https://www.youtube.com/watch?v=hEJnMQG9ev8', 'George Miller', 'George Miller, Brendan McCarthy, Nick Lathouris', 'Kennedy Miller Mitchell, Village Roadshow'),
 (104, 'Jennifer\'s Body', 'Jennifer\'s Body', 2009, 107, 'Estados Unidos', 'Devil\'s Kettle es una pequeña ciudad de los Estados Unidos, donde Jennifer y Needy son amigas desde la infancia y viven juntas. Un día, las chicas van a un bar donde toca un nuevo grupo de rock, y allí se produce un inesperado accidente. Tras provocarse un gran incendio, muchos de los asistentes no consiguen sobrevivir, pero las chicas logran escapar. A partir de entonces, Jennifer será poseída por unas fuerzas malévolas que la impulsarán a cometer asesinatos... principalmente a aquellos que intenten seducirla.', 5.6, 'https://media.themoviedb.org/t/p/w600_and_h900_face/5zjIlFApSZGCJvw88hNJfui7AgU.jpg', 'https://image.tmdb.org/t/p/original/aTmh5w201d86lt3juFk8tbK297Y.jpg', 'https://www.youtube.com/watch?v=hUA688q72Sg', 'Karyn Kusama', 'Diablo Cody', '20th Century Fox, Fox Atomic'),
@@ -410,7 +494,6 @@ INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `du
 (170, 'Longlegs', 'Longlegs', 2024, 101, 'Estados Unidos', 'A Lee Harker, una nueva y talentosa agente del FBI, le han asignado un caso sin resolver de un asesino en serie. A medida que la investigación se complica y se descubren pruebas ocultas, Harker se da cuenta de que existe un vínculo personal con el despiadado asesino y debe actuar con rapidez para evitar otro asesinato.', 5.9, 'https://media.themoviedb.org/t/p/w600_and_h900_face/tMdOL2d6bTv2ZhRbbUuNBrRAZ1G.jpg', 'https://image.tmdb.org/t/p/original/tabKOXkHRu6Nho2VOYrnyAirtY7.jpg', 'https://www.youtube.com/watch?v=PRQ2oBs23Oc', 'Osgood Perkins', 'Osgood Perkins', 'C2 Motion Picture Group, Automatik Entertainment'),
 (171, 'Piratas del Caribe: La maldición de la Perla Negra', 'Pirates of the Caribbean: The Curse of the Black Pearl', 2003, 143, 'Estados Unidos', 'Mar Caribe, siglo XVIII. El aventurero capitán Jack Sparrow piratea en aguas caribeñas, pero su andanzas terminan cuando su enemigo, el Capitán Barbossa, después de robarle su barco, el Perla Negra, ataca la ciudad de Port Royal y secuestra a Elizabeth Swann, la hija del Gobernador. Will Turner, amigo de la infancia de Elizabeth, se une a Jack para rescatarla y recuperar el Perla Negra. Pero Barbossa y su tripulación son víctimas de un conjuro que los condena a vivir eternamente y a transformarse cada noche en esqueletos vivientes. El conjuro sólo puede romperse si devuelven una pieza de oro azteca y saldan una deuda de sangre. El rescate de la bella Elizabeth será una tarea difícil, pues la maldición es real y será difícil enfrentarse con quienes no pueden morir.', 8.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/bVG48kmXuLaZYgPfSCmhs6EYFbX.jpg', 'https://image.tmdb.org/t/p/original/zXMGAtDqJ58P8G3W4bwKyYffPhn.jpg', 'https://www.youtube.com/watch?v=naQr0uTrH_s', 'Gore Verbinski', 'Ted Elliott, Terry Rossio', 'Walt Disney Pictures, Jerry Bruckheimer Films'),
 (172, 'Léon: El profesional', 'Léon: The Professional', 1994, 110, 'Francia', 'León, un solitario asesino a sueldo que vive en Nueva York, acoge a Mathilda, una niña de doce años que ha visto cómo un corrupto agente de la DEA asesinaba a toda su familia. Mathilda quiere aprender el oficio de León para vengar a su hermano pequeño.', 8.5, 'https://media.themoviedb.org/t/p/w600_and_h900_face/9Ztxqq9mAeGiXDkyqXJPaACUcbd.jpg', 'https://image.tmdb.org/t/p/original/erRKAGEjtz3XKYKp8TaSbLrIoB2.jpg', 'https://www.youtube.com/watch?v=IHExTihe8PM', 'Luc Besson', 'Luc Besson', 'Gaumont, Les Films du Dauphin');
-
 INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `duracion`, `pais`, `sinopsis`, `imdb`, `poster`, `backdrop`, `trailer_url`, `director`, `guionistas`, `productora`) VALUES
 (173, 'Los que se quedan', 'The Holdovers', 2023, 133, 'Estados Unidos', 'Un severo profesor de historia de un internado de Nueva Inglaterra se ve obligado a supervisar a los alumnos que no pueden irse a casa durante las vacaciones de Navidad. Con la ayuda de la cocinera del colegio, que ha sufrido una pérdida reciente, acaba conectando con uno de los estudiantes problemáticos.', 7.9, 'https://media.themoviedb.org/t/p/w600_and_h900_face/aZj21Kcmazecm6VDBn4bYU4evi3.jpg', 'https://image.tmdb.org/t/p/original/fdfJVwWnMVTb3pWcODEKIlROWLP.jpg', 'https://www.youtube.com/watch?v=AhKEpWSWDco', 'Alexander Payne', 'David Hemingson', 'Focus Features, Gran Via Productions'),
 (174, 'Tiburón', 'Jaws', 1975, 124, 'Estados Unidos', 'El jefe de policía Martin Brody, el oceanógrafo Matt Hooper y el cazador de tiburones Quint se unen para acabar con un gran tiburón blanco que aterroriza a la pequeña localidad costera de Amity Island. La película que inventó el concepto de blockbuster veraniego.', 8.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/aCqHb3eFQV8raX30OfGurqPlpjh.jpg', 'https://image.tmdb.org/t/p/original/sPSM46nQEgt8ynosttMEXbBAbEO.jpg', 'https://www.youtube.com/watch?v=rqTjkKHh7xM', 'Steven Spielberg', 'Peter Benchley, Carl Gottlieb', 'Universal Pictures, Zanuck/Brown Productions'),
@@ -462,7 +545,29 @@ INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `du
 (233, 'Divergente', 'Divergent', 2014, 139, 'Estados Unidos', 'En un mundo distópico en el que la sociedad se divide en cinco categorías (Verdad, Abnegación, Osadía, Cordialidad y Erudición), los jóvenes deben elegir, atendiendo a sus virtudes personales más destacadas, a qué facción pertenecer. Beatrice sorprende a los suyos con su decisión, pero ella no es como los demás: guarda un secreto del que podría depender el orden social e incluso su propia vida.', 6.7, 'https://media.themoviedb.org/t/p/w600_and_h900_face/libmZ7xJBkVWmoixPyF3EdTmNtt.jpg', 'https://image.tmdb.org/t/p/original/yB7Z3dc7omAFD5JBrOaVILywbYN.jpg', 'https://www.youtube.com/watch?v=sutZiQNAa2Q', 'Neil Burger', 'Evan Daugherty, Vanessa Taylor', 'Summit Entertainment, Red Wagon Entertainment'),
 (234, 'El castillo ambulante', 'Howl\'s Moving Castle', 2004, 119, 'Japón', 'Narra la historia de Sophie, una joven sobre la que pesa una horrible maldición que le confiere el aspecto de una anciana. Sophie decide pedir ayuda al mago Howl, que vive en un castillo ambulante, pero tal vez sea Howl quien necesite la ayuda de Sophie.', 8.6, 'https://media.themoviedb.org/t/p/w600_and_h900_face/p8EARnEw8KPZzlZg3vkseYVMczu.jpg', 'https://image.tmdb.org/t/p/original/nv5wwZou159v5OC61i4ElR7OqyY.jpg', 'https://www.youtube.com/watch?v=iwROgK94zcM', 'Hayao Miyazaki', 'Hayao Miyazaki', 'Studio Ghibli'),
 (235, 'El viaje de Chihiro', 'Sen to Chihiro no Kamikakushi', 2001, 125, 'Japón', 'Chihiro es una niña de diez años que viaja en coche con sus padres. Después de atravesar un túnel, llegan a un mundo fantástico, en el que no hay lugar para los seres humanos, sólo para los dioses de primera y segunda clase. Cuando descubre que sus padres han sido convertidos en cerdos, Chihiro se siente muy sola y asustada.', 9, 'https://media.themoviedb.org/t/p/w600_and_h900_face/2RcxjDykOssx4SfqshewyI9vfSl.jpg', 'https://image.tmdb.org/t/p/original/m4TUa2ciEWSlk37rOsjiSIvZDXE.jpg', 'https://www.youtube.com/watch?v=ByXuk9QqQkk', 'Hayao Miyazaki', 'Hayao Miyazaki', 'Studio Ghibli, Tokuma Shoten'),
-(236, 'Cariño, he encogido a los niños', 'Honey, I Shrunk the Kids', 1989, 93, 'Estados Unidos', 'Wayne Szalinski es un científico e inventor que desarrolla una máquina que permite encoger el tamaño de los objetos. Una pelota de béisbol activa accidentalmente la máquina sobre sus hijos, que vivirán una auténtica aventura intentando atravesar el césped del jardín hasta la casa, convertido ahora en una auténtica \"jungla\" para ellos.', 6.4, 'https://media.themoviedb.org/t/p/w600_and_h900_face/7Iqb3NQIm3DCMa4dOeuMQYeLHdF.jpg', 'https://image.tmdb.org/t/p/original/orzPkQ7ZMso0i7S7bPMtdRk5OdF.jpg', 'https://www.youtube.com/watch?v=LqQ0PoP4r_k', 'Joe Johnston', 'Ed Naha, Tom Schulman', 'Walt Disney Pictures, Silver Screen Partners IV');
+(236, 'Cariño, he encogido a los niños', 'Honey, I Shrunk the Kids', 1989, 93, 'Estados Unidos', 'Wayne Szalinski es un científico e inventor que desarrolla una máquina que permite encoger el tamaño de los objetos. Una pelota de béisbol activa accidentalmente la máquina sobre sus hijos, que vivirán una auténtica aventura intentando atravesar el césped del jardín hasta la casa, convertido ahora en una auténtica \"jungla\" para ellos.', 6.4, 'https://media.themoviedb.org/t/p/w600_and_h900_face/7Iqb3NQIm3DCMa4dOeuMQYeLHdF.jpg', 'https://image.tmdb.org/t/p/original/orzPkQ7ZMso0i7S7bPMtdRk5OdF.jpg', 'https://www.youtube.com/watch?v=LqQ0PoP4r_k', 'Joe Johnston', 'Ed Naha, Tom Schulman', 'Walt Disney Pictures, Silver Screen Partners IV'),
+(237, 'Cinema Paradiso', 'Nuovo Cinema Paradiso', 1988, 155, 'Italia', '\'Cinema Paradiso\' es una historia de amor por el cine. Narra la historia de Salvatore, un niño de un pueblecito italiano en el que el único pasatiempo es ir al cine. Subyugado por las imágenes en movimiento, el chico cree ciegamente que el cine es magia; pero, un día, Alfredo, el operador, accede a enseñarle al pequeño los misterios y secretos que se ocultan detrás de una película. Salvatore va creciendo y llega el momento en el que debe abandonar el pueblo y buscarse la vida. Treinta años después recibe un mensaje, en el que le comunican que debe volver a casa.', 8.5, 'https://media.themoviedb.org/t/p/w600_and_h900_face/hHwsr3t5n7VVUbPyU8VZswn0jkL.jpg', 'https://image.tmdb.org/t/p/original/zoVeIgKzGJzpdG6Gwnr7iOYfIMU.jpg', 'https://www.youtube.com/watch?v=8dwMSvJsWcs', 'Giuseppe Tornatore', 'Giuseppe Tornatore', 'Cristaldifilm, RAI'),
+(238, 'Vivir el momento', 'We Live in Time', 2024, 107, 'Reino Unido', 'Almut y Tobias se conocen en un encuentro inesperado que cambia sus vidas. A través de pasajes de su vida en común −se enamoran, construyen un hogar, forman una familia− se nos revela una difícil verdad que amenaza con sacudir sus cimientos. A medida que emprenden un camino que los límites del tiempo desafían, los protagonistas aprenderán a apreciar cada momento del inusual camino que ha tomado su historia de amor, que abarca una década.', 7.4, 'https://media.themoviedb.org/t/p/w600_and_h900_face/RiE4GRCOgSS9OgDi4nUuEvgGyK.jpg', 'https://image.tmdb.org/t/p/original/zfcVI5nWs9Y927VYEdPHXog7SD3.jpg', 'https://www.youtube.com/watch?v=jT_hOKgr-Lk', 'John Crowley', 'Nick Payne', 'Film4, Blueprint Pictures'),
+(239, 'Submarine', 'Submarine', 2010, 97, 'Reino Unido', 'Oliver Tate (Craig Roberts) es un peculiar chico de 15 años que tiene dos objetivos: impedir que su madre abandone a su padre y encontrarse a sí mismo aunque sea a través de una chica.', 7.3, 'https://media.themoviedb.org/t/p/w600_and_h900_face/hZzj3MNUFbzy7WGLCzc3txp4BMX.jpg', 'https://image.tmdb.org/t/p/original/k0Xr1jjwYO5p1un1S615g8FJ46Z.jpg', 'https://www.youtube.com/watch?v=b6lEbZygxJM', 'Richard Ayoade', 'Richard Ayoade', 'Film4, Warp Films, Optimum Releasing'),
+(240, 'Big Fish', 'Big Fish', 2003, 125, 'Estados Unidos', 'William Bloom (Billy Crudup) no tiene muy buena relación con su padre (Albert Finney), pero tras enterarse de que padece una enfermedad terminal, regresa a su hogar para estar a su lado en sus últimos momentos. Una vez más, William se verá obligado a escucharlo mientras cuenta las interminables historias de su juventud. Pero, en esta ocasión, tratará de averiguar cosas que le permitan conocer mejor a su padre, aunque para ello tendrá que separar claramente realidad y fantasía, elementos que aparecen siempre mezclados en los relatos de su progenitor.', 8, 'https://media.themoviedb.org/t/p/w600_and_h900_face/m4gYCeV4GfGDw4PpMgU9kFIaNxP.jpg', 'https://image.tmdb.org/t/p/original/tjKDqLWCSIJwiSXgU5aJo6taSII.jpg', 'https://www.youtube.com/watch?v=_hZ3BlUGS4Q', 'Tim Burton', 'John August', 'Columbia Pictures, Jinks/Cohen Company, Di Bonaventura Pictures'),
+(241, 'Capitán América: Civil War', 'Captain America: Civil War', 2016, 147, 'Estados Unidos', 'Después de que otro incidente internacional involucre a Los Vengadores, causando varios daños colaterales, aumentan las presiones políticas para instaurar un sistema que exija más responsabilidades y que determine cuándo deben contratar los servicios del grupo de superhéroes. Esta nueva situación dividirá a Los Vengadores, mientras intentan proteger al mundo de un nuevo y terrible villano. Tercera entrega de la saga Capitán América.', 7.8, 'https://media.themoviedb.org/t/p/w600_and_h900_face/jPPy7tCfglppQo6J9nGwU6UmJ8X.jpg', 'https://image.tmdb.org/t/p/original/cJGXeC2nPWBC2dZdA1i3MI5aRZC.jpg', 'https://www.youtube.com/watch?v=dKrVegVI0Us', 'Anthony Russo, Joe Russo', 'Christopher Markus, Stephen McFeely', 'Marvel Studios, Walt Disney Pictures'),
+(242, 'Million Dollar Baby', 'Million Dollar Baby', 2004, 132, 'Estados Unidos', 'Después de haber entrenado y representado a los mejores púgiles, Frankie Dunn (Eastwood) regenta un gimnasio con la ayuda de Scrap (Freeman), un ex-boxeador que es además su único amigo. Frankie es un hombre solitario y adusto que se refugia desde hace años en la religión buscando una redención que no llega. Un día, entra en su gimnasio Maggie Fitzgerald (Swank), una voluntariosa chica que quiere boxear y que está dispuesta a luchar denodadamente para conseguirlo. Frankie la rechaza alegando que él no entrena chicas y que, además, es demasiado mayor. Pero Maggie no se rinde y se machaca cada día en el gimnasio, con el único apoyo de Scrap.', 8.2, 'https://media.themoviedb.org/t/p/w600_and_h900_face/3mNb5EaO5HfgrxZGx917c8kNp6E.jpg', 'https://image.tmdb.org/t/p/original/vfRSeOs11txad7ve15A83TFTQOw.jpg', 'https://www.youtube.com/watch?v=8ZNr3QCvNbA', 'Clint Eastwood', 'Paul Haggis', 'Warner Bros., Malpaso Productions, Lakeshore Entertainment'),
+(243, 'Animales Nocturnos', 'Nocturnal Animals', 2016, 116, 'Estados Unidos', 'SSusan Morrow (Amy Adams) es una galerista afincada en Los Ángeles que comparte una vida llena de lujos, aunque vacía, con Hutton Morrow (Armie Hammer), su segundo marido. Un día Susan recibe una novela escrita por su exmarido Edward Sheffield (Jake Gyllenhaal), del que lleva años sin tener noticias. En una nota le pide que lea la novela inédita y que se ponga en contacto con él, pues se quedará unos días en la ciudad. Es de noche. Susan, sola en la cama, empieza a leer, y es la historia de un matrimonio con una hija que conduciendo por Texas una noche son perseguidos por otro vehículo...', 7.5, 'https://media.themoviedb.org/t/p/w600_and_h900_face/tRia5btRjsE9kOW2Zl3HgyFlqOn.jpg', 'https://image.tmdb.org/t/p/original/XR7NFlN3VWDMZO4nZHhsmDMR4Y.jpg', 'https://www.youtube.com/watch?v=2ASPBRbnYpI', 'Tom Ford', 'Tom Ford', 'Focus Features, Fade to Black'),
+(244, 'Orígenes', 'I Origins', 2014, 106, 'Estados Unidos', 'Ian Gray, un estudiante de biología molecular especializado en la evolución del ojo humano, conoce a una misteriosa mujer cuyo iris es multicolor. Años después, su investigación lo lleva a hacer un descubrimiento asombroso, que podría cambiar la forma en que percibimos nuestra existencia.', 7.3, 'https://media.themoviedb.org/t/p/w600_and_h900_face/2VbIjTUfHNCIwLIkXn3IPUS8oBi.jpg', 'https://image.tmdb.org/t/p/original/9ozT7W3KWebMPtlJhPWST7s144s.jpg', 'https://www.youtube.com/watch?v=WzzMEIKsVDQ', 'Mike Cahill', 'Mike Cahill', 'Fox Searchlight Pictures, Parts and Labor'),
+(245, 'Sweeney Todd: El barbero diabólico de la calle Fleet', 'Sweeney Todd: The Demon Barber of Fleet Street', 2007, 116, 'Estados Unidos', 'Basada en un famoso musical de Broadway, narra la historia de Benjamin Barker, también conocido como \"Sweeney Todd\" (Johnny Depp), un siniestro personaje que tiene una barbería en Londres y cuya navaja de afeitar apura demasiado...', 7.4, 'https://media.themoviedb.org/t/p/w600_and_h900_face/iL1B6kewtB8RsiLsIs4GJJ3Zo06.jpg', 'https://image.tmdb.org/t/p/original/90a3fKzA8hoLBtyGoDo1bxM2SV2.jpg', 'https://www.youtube.com/watch?v=epNV6DzVPOs', 'Tim Burton', 'John Logan', 'DreamWorks, Warner Bros., Zanuck Company'),
+(246, 'Langosta', 'The Lobster', 2015, 119, 'Irlanda', 'Narra una historia de amor no convencional, ambientada en un mundo distópico, en el que según las reglas establecidas, los solteros son arrestados y enviados a un lugar donde tienen que encontrar pareja en un plazo de 45 días. El tema central es la soledad, el temor a morir solo, a vivir solo, y también al temor a vivir con alguien.', 7.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/uGJ7JNSwvt9wr4XO2uoNGtXIdrq.jpg', 'https://image.tmdb.org/t/p/original/rqMvkc7P5yYfomhYXDmteWQoUeK.jpg', 'https://www.youtube.com/watch?v=4iAoZNEamPM', 'Yorgos Lanthimos', 'Yorgos Lanthimos, Efthymis Filippou', 'A24, Element Pictures, Film4, Scarlet Films'),
+(247, 'Raya y el último dragón', 'Raya and the Last Dragon', 2021, 107, 'Estados Unidos', 'En el fantástico mundo de Kumandra, humanos y dragones vivieron juntos hace mucho tiempo en perfecta armonía. Pero cuando unas fuerzas del mal amenazaron el territorio, los dragones se sacrificaron para salvar a la humanidad. Ahora, 500 años después, esas mismas fuerzas malignas han regresado y Raya, una guerrera solitaria, tendrá que encontrar al último y legendario dragón para reconstruir un mundo destruido y volver a unir a su pueblo.', 7.3, 'https://media.themoviedb.org/t/p/w600_and_h900_face/hbjOtofNpvFvhzBUUoZGAjkjjsl.jpg', 'https://image.tmdb.org/t/p/original/rONChBDQ19NSuBNoneRRJVrHAB9.jpg', 'https://www.youtube.com/watch?v=1VIZ89FEjYI', 'Don Hall, Carlos López Estrada', 'Qui Nguyen, Adele Lim', 'Walt Disney Animation Studios, Walt Disney Pictures'),
+(248, 'Tangerine', 'Tangerine', 2015, 88, 'Estados Unidos', 'En la víspera de Navidad, la prostituta transgénero Sin-Dee Rella, que acaba de cumplir una sentencia en prisión, se encuentra con su amiga Alexandra, que le informa de que su novio Chester ha estado engañándola. Ahora, Sin-Dee Rella iniciará una búsqueda por la ciudad para descubrir la verdad.', 7.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/cGnfg9gFxwgepxaeHWLM1dsfTX5.jpg', 'https://image.tmdb.org/t/p/original/6mVo1yI9RWVoV9AqThRetX8G4yT.jpg', 'https://www.youtube.com/watch?v=_kbl2rGJkpk', 'Sean Baker', 'Sean Baker, Chris Bergoch', 'Duplass Brothers Productions'),
+(249, 'La bruja', 'The Witch', 2015, 93, 'Estados Unidos', 'Nueva Inglaterra, 1630. Un matrimonio de colonos cristianos, con cinco hijos, vive cerca de un bosque que, según las creencias populares, está dominado por el mal. Cuando el hijo recién nacido desaparece y los cultivos no crecen, los miembros de la familia se rebelan los unos contra los otros: un mal sobrenatural les acecha en el bosque cercano.', 6.9, 'https://media.themoviedb.org/t/p/w600_and_h900_face/yN7zUze3fkbGNNHI1JYVpRixzAx.jpg', 'https://image.tmdb.org/t/p/original/pCiVhcptHIta2xMKTSZXIxRA2Dd.jpg', 'https://www.youtube.com/watch?v=iQXmlf3Sefg', 'Robert Eggers', 'Robert Eggers', 'A24, Parts and Labor, RT Features');
+INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `duracion`, `pais`, `sinopsis`, `imdb`, `poster`, `backdrop`, `trailer_url`, `director`, `guionistas`, `productora`) VALUES
+(250, 'Robin Hood', 'Robin Hood', 1973, 83, 'Estados Unidos', 'La popular leyenda de Robin Hood es revivida mágicamente por Disney. La diversión y el romance aparecen por doquier cuando Robin Hood, el héroe espadachín del Bosque de Sherwood, se desliza de aventura en aventura con su valiente ayudante, Little John, y su desternillante banda. Su objetivo es vencer al malvado príncipe y su ayuda de cámara, Hiss, que tienen atemorizado al pueblo a base de injustos impuestos.', 7.6, 'https://media.themoviedb.org/t/p/w600_and_h900_face/49XBX5xwFrJVP1bQLJf4MFFOavZ.jpg', 'https://image.tmdb.org/t/p/original/3WeFPoPVIGgMumjgLn0EPIfq53A.jpg', 'https://www.youtube.com/watch?v=v_t8jghlVoQ', 'Wolfgang Reitherman', 'Larry Clemmons, Ken Anderson, Vance Gerry, Frank Thomas, Eric Cleworth, Julius Svendsen, David Michener', 'Walt Disney Productions'),
+(251, 'Okja', 'Okja', 2017, 120, 'Corea del Sur', 'Durante diez idílicos años, la pequeña Mija (An Seo Hyun) ha sido la cuidadora y compañera de Okja, un gigantesco cerdo, en su granja de la montaña, en Corea del Sur. Pero todo cambiará cuando la gran multinacional familiar Mirando Corporation se intente llevar a Okja a Nueva York, donde la narcisista y egocéntrica Lucy Mirando (Tilda Swinton) tiene otros planes para la mejor amiga de Mija.', 7.3, 'https://media.themoviedb.org/t/p/w600_and_h900_face/mxn5HLE5DX1bhkw2VKCvXDtzVBN.jpg', 'https://image.tmdb.org/t/p/original/y4POrXAN1aNA76g2qV4QK0x3LX8.jpg', 'https://www.youtube.com/watch?v=AjCebKn4iic', 'Bong Joon-ho', 'Bong Joon-ho, Jon Ronson', 'Netflix, Plan B Entertainment, Lewis Pictures'),
+(252, 'Monkey Man', 'Monkey Man', 2024, 113, 'Estados Unidos', 'Kid es un delincuente que acaba de salir de prisión y vive en la India, intentando adaptarse a un mundo marcado por la avaricia y carente de valores espirituales. Allí luchará por buscar venganza por la muerte de su madre y defender a las clases más desfavorecidas. Aclamado debut en la dirección del actor Dev Patel.', 6.8, 'https://media.themoviedb.org/t/p/w600_and_h900_face/kJhQfICVsZGeYGGRudgcqiD1zQY.jpg', 'https://image.tmdb.org/t/p/original/4jHWJIn7miCLAa87UEegGanTkJm.jpg', 'https://www.youtube.com/watch?v=r8L_9y-ZrCE', 'Dev Patel', 'Dev Patel, Paul Angunawela, John Collee', 'Universal Pictures, Monkeypaw Productions, Thunder Road Films'),
+(253, 'Thelma & Louise', 'Thelma & Louise', 1991, 130, 'Estados Unidos', 'Thelma Dickinson, un ama de casa de vida vacía y anodina, está casada con un cretino detestable que la trata como a una niña. Por su parte, Louise Sawyer trabaja como camarera en una cafetería y sueña con que su novio Jimmy, que es músico, se case con ella. Un fin de semana deciden hacer un viaje juntas en el coche de Louise para alejarse de la mortal rutina de sus vidas y de todas sus frustraciones. Sin embargo, su escapada, que prometía ser divertida y, sobre todo, liberadora, acaba siendo una experiencia llena de episodios dramáticos.', 7.6, 'https://media.themoviedb.org/t/p/w600_and_h900_face/zS4vosCL144152a1hlU2vbiv8cO.jpg', 'https://image.tmdb.org/t/p/original/9tsUTDwsi1WIxDsqMv8n1Cv9PnI.jpg', 'https://www.youtube.com/watch?v=2A2V6pPZmWI', 'Ridley Scott', 'Callie Khouri', 'Metro-Goldwyn-Mayer, Pathé Entertainment');
+
+--
+-- Volcado de datos para la tabla `peliculas_en_cartelera`
+--
 
 INSERT INTO `peliculas_en_cartelera` (`id_pelicula`, `fecha_inicio`) VALUES
 (28, '2026-04-10'),
@@ -474,6 +579,10 @@ INSERT INTO `peliculas_en_cartelera` (`id_pelicula`, `fecha_inicio`) VALUES
 (85, '2026-04-10'),
 (86, '2026-03-13'),
 (93, '2026-04-30');
+
+--
+-- Volcado de datos para la tabla `peliculas_generos`
+--
 
 INSERT INTO `peliculas_generos` (`id_pelicula`, `id_genero`) VALUES
 (1, 1),
@@ -997,7 +1106,64 @@ INSERT INTO `peliculas_generos` (`id_pelicula`, `id_genero`) VALUES
 (235, 7),
 (236, 2),
 (236, 4),
-(236, 9);
+(236, 9),
+(237, 4),
+(237, 6),
+(238, 6),
+(238, 11),
+(239, 4),
+(239, 6),
+(239, 11),
+(239, 18),
+(240, 2),
+(240, 6),
+(240, 7),
+(241, 1),
+(241, 2),
+(241, 9),
+(241, 19),
+(242, 6),
+(242, 13),
+(243, 6),
+(243, 10),
+(243, 17),
+(244, 6),
+(244, 9),
+(244, 11),
+(244, 18),
+(245, 5),
+(245, 6),
+(245, 8),
+(246, 6),
+(246, 9),
+(246, 11),
+(247, 1),
+(247, 2),
+(247, 3),
+(247, 7),
+(248, 4),
+(248, 6),
+(248, 18),
+(249, 6),
+(249, 8),
+(250, 2),
+(250, 3),
+(250, 4),
+(250, 7),
+(251, 2),
+(251, 6),
+(251, 9),
+(252, 1),
+(252, 5),
+(252, 10),
+(253, 2),
+(253, 5),
+(253, 6),
+(253, 16);
+
+--
+-- Volcado de datos para la tabla `peliculas_plataformas`
+--
 
 INSERT INTO `peliculas_plataformas` (`id_pelicula`, `id_plataforma`) VALUES
 (1, 5),
@@ -1222,10 +1388,35 @@ INSERT INTO `peliculas_plataformas` (`id_pelicula`, `id_plataforma`) VALUES
 (233, 4),
 (234, 1),
 (235, 1),
-(236, 3);
+(236, 3),
+(237, 5),
+(238, 2),
+(239, 5),
+(240, 4),
+(241, 3),
+(242, 4),
+(243, 2),
+(244, 5),
+(245, 4),
+(246, 5),
+(247, 3),
+(248, 5),
+(249, 5),
+(250, 3),
+(251, 1),
+(252, 1),
+(253, 5);
+
+--
+-- Volcado de datos para la tabla `penalizaciones_grupo`
+--
 
 INSERT INTO `penalizaciones_grupo` (`id_penalizacion`, `id_grupo`, `id_usuario`, `motivo`, `duracion_dias`, `fecha_expulsion`, `admin_id`) VALUES
 (1, 5, 1, 'mala_conducta', 1, '2026-05-04 09:22:24', NULL);
+
+--
+-- Volcado de datos para la tabla `plataformas`
+--
 
 INSERT INTO `plataformas` (`id_plataforma`, `nombre`, `logo`) VALUES
 (1, 'Netflix', 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940'),
@@ -1236,6 +1427,10 @@ INSERT INTO `plataformas` (`id_plataforma`, `nombre`, `logo`) VALUES
 (6, 'Filmin', 'https://www.filmin.es/assets/img/instances/es/share-big.png'),
 (7, 'Apple TV', 'https://www.apple.com/v/apple-tv/b/images/meta/apple-tv__ft1nltyknfmi_og.png');
 
+--
+-- Volcado de datos para la tabla `proximos_estrenos`
+--
+
 INSERT INTO `proximos_estrenos` (`id_estreno`, `id_pelicula`, `titulo`, `poster`, `fecha_estreno`) VALUES
 (3, 36, 'La Odisea', 'https://www.themoviedb.org/t/p/w600_and_h900_face/f9J2BhE0W5ivcVEZ9zsv8HojvV5.jpg', '2026-07-17'),
 (4, 37, 'Vengadores: Doomsday', 'https://www.themoviedb.org/t/p/w600_and_h900_face/rQKabpeIewLLNStFr3anEXI0xqu.jpg', '2026-12-18'),
@@ -1244,6 +1439,10 @@ INSERT INTO `proximos_estrenos` (`id_estreno`, `id_pelicula`, `titulo`, `poster`
 (7, 40, 'Spider-Man: Brand New Day', 'https://www.themoviedb.org/t/p/w600_and_h900_face/ct7rSLY6OlQBETxQDzINzkhYIO2.jpg', '2026-07-25'),
 (8, 167, 'Pioneras: solo querían jugar', 'https://media.themoviedb.org/t/p/w600_and_h900_face/iNEBHb7633ax0Sz1KXu4gRpUHHD.jpg', '2026-06-05'),
 (9, 94, 'La casa en el árbol', 'https://media.themoviedb.org/t/p/w600_and_h900_face/f8AwBa5eaRXHO3mzgNgpXNwTh3h.jpg', '2026-05-08');
+
+--
+-- Volcado de datos para la tabla `recomendadas_semana`
+--
 
 INSERT INTO `recomendadas_semana` (`id`, `id_pelicula`, `orden`, `fecha_asignacion`) VALUES
 (2, 135, 1, '2026-05-14'),
@@ -1256,6 +1455,10 @@ INSERT INTO `recomendadas_semana` (`id`, `id_pelicula`, `orden`, `fecha_asignaci
 (9, 17, 8, '2026-05-14'),
 (11, 75, 9, '2026-05-14'),
 (12, 92, 9, '2026-05-14');
+
+--
+-- Volcado de datos para la tabla `reparto`
+--
 
 INSERT INTO `reparto` (`id_reparto`, `id_pelicula`, `nombre`, `personaje`) VALUES
 (1, 1, 'Timothée Chalamet', 'Paul Atreides'),
@@ -1896,11 +2099,19 @@ INSERT INTO `reparto` (`id_reparto`, `id_pelicula`, `nombre`, `personaje`) VALUE
 (810, 236, 'Matt Frewer', 'Big Russ Thompson'),
 (811, 236, 'Marcia Strassman', 'Diane Szalinski');
 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
 INSERT INTO `usuarios` (`id_usuario`, `rol`, `activo`, `username`, `email`, `password`, `avatar`, `biografia`, `localidad`, `fecha_registro`) VALUES
 (1, 'usuario', 1, 'mariamv', 'maria@email.com', '$2y$10$joV.Oa/WKtzVnDxWUKs/m.WByKYDLtuqlxCp45VbeJO61irFXwQ4C', 'https://media.vandalsports.com/master/5-2025/202552914584_1.jpg', 'viendo más pelis de las que debería (y disfrutándolo).', 'Almendralejo', '2026-02-10 12:31:25'),
 (2, 'usuario', 1, 'juanita', 'juanita@email.es', '$2y$10$lkhwz1offPDGR9AwYYEkfuTsfYq0cCgEbQdfDum55NSiC2UFapfwm', 'https://hips.hearstapps.com/hmg-prod/images/braveheart-mel-gibson-6581b5040dac4.jpg?resize=980:*', NULL, NULL, '2026-04-01 17:35:12'),
 (3, 'admin', 1, 'adminmaria', 'adminmaria@email.com', '$2y$10$NnCslMRFTGw9LqtWprIIQO.ZhOB0VRTZMWmUYbQW5Bdbh5xTNq2Ri', 'img/avatar-admin.avif', NULL, NULL, '2026-04-27 11:33:12'),
 (4, 'usuario', 1, 'manuelita', 'manuelita@email.com', '$2y$10$upO.jsZKc7T6W1PDKjklvuQV/t7RDQAhQBqaNpZIcDGtxwGHDJ/Ma', 'uploads/avatars/avatar_4_1776937744.jpg', NULL, NULL, '2026-04-12 14:50:07');
+
+--
+-- Volcado de datos para la tabla `usuarios_favoritas_perfil`
+--
 
 INSERT INTO `usuarios_favoritas_perfil` (`id_usuario`, `id_pelicula`, `orden`, `fecha`) VALUES
 (1, 73, 1, '2026-05-07 11:44:23'),
@@ -1909,11 +2120,19 @@ INSERT INTO `usuarios_favoritas_perfil` (`id_usuario`, `id_pelicula`, `orden`, `
 (1, 87, 4, '2026-05-07 11:44:23'),
 (1, 92, 5, '2026-05-07 11:44:23');
 
+--
+-- Volcado de datos para la tabla `usuarios_generos_favoritos`
+--
+
 INSERT INTO `usuarios_generos_favoritos` (`id_usuario`, `id_genero`) VALUES
 (1, 8),
 (1, 16),
 (1, 17),
 (1, 18);
+
+--
+-- Volcado de datos para la tabla `usuarios_peliculas`
+--
 
 INSERT INTO `usuarios_peliculas` (`id_usuario`, `id_pelicula`, `estado`, `valoracion`, `fecha`, `fecha_estado`) VALUES
 (1, 1, NULL, 1, '2026-04-17 09:52:30', '2026-04-17 10:37:04'),
@@ -1935,6 +2154,12 @@ INSERT INTO `usuarios_peliculas` (`id_usuario`, `id_pelicula`, `estado`, `valora
 (1, 88, NULL, 5, '2026-05-04 13:22:55', '2026-05-04 13:22:55'),
 (1, 135, 'favorita', NULL, '2026-05-18 10:23:05', NULL),
 (1, 142, 'vista', 3, '2026-05-12 12:40:50', '2026-05-12 12:57:33'),
+(1, 169, 'pendiente', NULL, '2026-05-21 10:43:43', NULL),
 (4, 5, NULL, 5, '2026-04-12 14:57:28', NULL),
 (4, 58, 'pendiente', NULL, '2026-04-12 15:08:06', NULL),
 (4, 81, 'favorita', 5, '2026-04-12 14:54:13', NULL);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
