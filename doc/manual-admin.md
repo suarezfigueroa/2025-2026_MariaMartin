@@ -3,7 +3,6 @@
 <div align="center">
   <img src="img/logo.png" alt="Logo TakeOne" width="120"/>
 </div>
----
  
 ## Índice
  
