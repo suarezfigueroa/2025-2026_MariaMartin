@@ -1,7 +1,7 @@
 # Manual de administrador — TakeOne
  
 <div align="center">
-  <img src="img/logo_gato_sin_fondo.png" alt="Logo TakeOne" width="120"/>
+  <img src="img/logo.png" alt="Logo TakeOne" width="120"/>
 </div>
 ---
  

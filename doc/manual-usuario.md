@@ -1,7 +1,7 @@
 # Manual de usuario — TakeOne
  
 <div align="center">
-  <img src="img/logo_gato_sin_fondo.png" alt="Logo TakeOne" width="120"/>
+  <img src="img/logo.png" alt="Logo TakeOne" width="120"/>
 </div>
 ---
  
@@ -242,6 +242,9 @@ Haz clic en **Editar perfil** para modificar:
 - Contraseña.
 - Tus 5 películas favoritas.
 - Tus géneros favoritos.
+
+**HAY QUE GUARDAR LOS CAMBIOS AL FINAL PARA APLICARLOS**
+
 ### 9.2. Amigos y mensajes privados
  
 Desde la sección **Amigos** puedes:
