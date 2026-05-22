@@ -2114,20 +2114,26 @@ footer.site-footer {
 }
 
 .tab-btn {
-  background: none;
+  background: rgba(255,255,255,0.1);
   border: none;
   text-decoration: none;
   color: white;
   font-size: 1rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.4rem;
+  border-radius: 8px;
   cursor: pointer;
-  position: relative;
-  transition: opacity 0.3s;
+  transition: background 0.3s, opacity 0.3s;
 }
 
 .tab-btn:hover {
-  opacity: 0.8;
+  background: rgba(255,255,255,0.18);
+  opacity: 1;
+}
+
+.tab-btn.active {
+  background: #14b8a6;
+  color: white;
 }
 
 /* Create Group Button */
