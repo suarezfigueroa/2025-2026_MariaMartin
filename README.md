@@ -8,6 +8,57 @@
 
 # TakeOne
 
+<style>
+
+/* Texto general */
+body {
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+/* Espaciado entre párrafos */
+p {
+    margin-bottom: 24px;
+}
+
+/* Títulos principales */
+h2 {
+    margin-top: 70px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+/* Subtítulos */
+h3 {
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
+
+/* Subapartados */
+h4 {
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+/* Listas */
+ul, ol {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+}
+
+/* Elementos de lista */
+li {
+    margin-bottom: 14px;
+}
+
+/* Separación visual de líneas */
+hr {
+    margin: 50px 0;
+}
+
+</style>
+
 ### Proyecto Final del Grado Superior de Desarrollo de Aplicaciones Web (DAW).
 
 ---
