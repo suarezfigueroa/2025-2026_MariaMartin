@@ -4,11 +4,27 @@
 
 <div align="center">
 
-<img src="doc/img/logo.png" alt="Logo TakeOne" width="180"/>
+<img src="doc/img/logo.png" width="160">
 
 # TakeOne
 
-### Proyecto Final del Grado Superior de Desarrollo de Aplicaciones Web (DAW).
+### Un espacio para quienes aman las películas.
+
+<br>
+
+<img src="doc/img/mockup-portada.png" width="900">
+
+<br><br>
+
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+<br><br>
+
+Proyecto Final del Grado Superior de Desarrollo de Aplicaciones Web (DAW)
+
+</div>
 
 ---
 
