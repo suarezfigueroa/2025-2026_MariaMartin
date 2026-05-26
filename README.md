@@ -22,9 +22,9 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-<br><br>
+<br>
 
-Proyecto Final del Grado Superior de Desarrollo de Aplicaciones Web (DAW)
+### Proyecto Final del Grado Superior de Desarrollo de Aplicaciones Web (DAW)
 
 </div>
 
