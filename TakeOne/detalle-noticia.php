@@ -1,45 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+require_once 'includes/conexion.php';
 
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+if (!$id) {
+    header('Location: noticias.php');
+    exit;
+}
+
+$stmt = $pdo->prepare("SELECT * FROM noticias WHERE id_noticia = ?");
+$stmt->execute([$id]);
+$noticia = $stmt->fetch();
+if (!$noticia) {
+    header('Location: noticias.php');
+    exit;
+}
+
+$stmt_otras = $pdo->prepare(
+    "SELECT id_noticia, titulo, imagen, fecha FROM noticias
+     WHERE id_noticia != ?
+     ORDER BY fecha DESC
+     LIMIT 3"
+);
+$stmt_otras->execute([$id]);
+$otras = $stmt_otras->fetchAll();
+?>
+
+<!doctype html>
+<html lang="es" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php
-            require_once 'includes/conexion.php';
-
-            $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-            if (!$id) {
-                header('Location: noticias.php');
-                exit;
-            }
-
-            $stmt = $pdo->prepare("SELECT * FROM noticias WHERE id_noticia = ?");
-            $stmt->execute([$id]);
-            $noticia = $stmt->fetch();
-
-            if (!$noticia) {
-                header('Location: noticias.php');
-                exit;
-            }
-
-            // Otras noticias para el sidebar
-            $stmt_otras = $pdo->prepare(
-                "SELECT id_noticia, titulo, imagen, fecha FROM noticias
-             WHERE id_noticia != ?
-             ORDER BY fecha DESC
-             LIMIT 3"
-            );
-            $stmt_otras->execute([$id]);
-            $otras = $stmt_otras->fetchAll();
-
-            echo htmlspecialchars($noticia['titulo']) . ' - TakeOne';
-            ?></title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+  <title><?= htmlspecialchars($noticia['titulo']) ?> - TakeOne</title>
+  <?php require_once 'includes/head.php'; ?>
 </head>
 
 <body>
