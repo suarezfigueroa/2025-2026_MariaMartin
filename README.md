@@ -627,9 +627,9 @@ El proyecto está organizado con la siguiente estructura de carpetas:
 📁 takeone/
 ├── 📁 admin/          → Paneles de administración
 ├── 📁 api/            → Endpoints y lógica de la API interna
-├── 📁 css/            → Hojas de estilo de usuario (styles.css) y de admin (admin.css)
+├── 📁 css/            → Hojas de estilo de usuario (styles.css), admin (admin.css) y responsive (responsive.css)
 ├── 📁 img/            
-├── 📁 includes/       → Archivos reutilizables (conexion.php, header.php, footer.php)
+├── 📁 includes/       → Archivos reutilizables (conexion.php, head.php, header.php, footer.php)
 ├── 📁 js/             → Scripts de JavaScript de la parte usuario
 ├── 📁 uploads/        → Imágenes subidas por los usuarios (avatares, portadas)
 └── 📄 index.php      → Página principal de acceso
