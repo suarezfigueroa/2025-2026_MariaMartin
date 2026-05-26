@@ -104,24 +104,26 @@
                     <form method="GET" action="peliculas.php" id="formBusquedaPeliculas">
 
                         <!-- BARRA DE BÚSQUEDA -->
-                        <div class="movie-search-bar">
-                            <img src="img/lupa-de-busqueda.png" alt="Buscar" style="width:20px; height:20px;margin-right:15px;">
-                            <input
-                                type="text"
-                                name="busqueda"
-                                id="buscadorPeliculas"
-                                placeholder="Encuentra una película"
-                                value="<?= htmlspecialchars($filtroBusqueda) ?>"
-                                autocomplete="off"
-                                maxlength="100">
-                            <button
-                                type="button"
-                                class="listas-search-clear"
-                                id="limpiarBusquedaPeliculas"
-                                aria-label="Limpiar búsqueda"
-                                style="display:<?= $filtroBusqueda ? 'flex' : 'none' ?>;">
-                                <span class="material-icons-outlined">close</span>
-                            </button>
+                        <div class="movie-search-bar-wrapper">
+                            <div class="movie-search-bar">
+                                <img src="img/lupa-de-busqueda.png" alt="Buscar" style="width:20px; height:20px;margin-right:15px;">
+                                <input
+                                    type="text"
+                                    name="busqueda"
+                                    id="buscadorPeliculas"
+                                    placeholder="Encuentra una película"
+                                    value="<?= htmlspecialchars($filtroBusqueda) ?>"
+                                    autocomplete="off"
+                                    maxlength="100">
+                                <button
+                                    type="button"
+                                    class="listas-search-clear"
+                                    id="limpiarBusquedaPeliculas"
+                                    aria-label="Limpiar búsqueda"
+                                    style="display:<?= $filtroBusqueda ? 'flex' : 'none' ?>;">
+                                    <span class="material-icons-outlined">close</span>
+                                </button>
+                            </div>
                         </div>
 
                         <!-- DESPLEGABLES -->

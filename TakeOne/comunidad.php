@@ -155,9 +155,11 @@ $motivos_usuario = [
                     <form method="GET" action="comunidad.php" id="filtroForm">
                         <input type="hidden" name="vista" value="<?php echo htmlspecialchars($vista); ?>">
 
-                        <div class="search-box">
-                            <span class="material-icons-outlined">search</span>
-                            <input type="text" id="buscadorGrupos" placeholder="Buscar grupos" autocomplete="off">
+                        <div class="search-box-gradient-wrap">
+                            <div class="search-box">
+                                <span class="material-icons-outlined">search</span>
+                                <input type="text" id="buscadorGrupos" placeholder="Buscar grupos" autocomplete="off">
+                            </div>
                         </div>
 
                         <div class="filters">

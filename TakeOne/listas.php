@@ -55,18 +55,20 @@
                     </div>
 
                     <!-- Buscador -->
-                    <div class="listas-search-wrap">
-                        <span class="material-icons-outlined listas-search-icon">search</span>
-                        <input
-                            type="text"
-                            id="buscadorListas"
-                            class="listas-search-input"
-                            placeholder="Busca por nombre o palabra..."
-                            autocomplete="off"
-                            maxlength="100">
-                        <button class="listas-search-clear" id="limpiarBusqueda" aria-label="Limpiar búsqueda" style="display:none;">
-                            <span class="material-icons-outlined">close</span>
-                        </button>
+                    <div class="listas-search-gradient-wrap">
+                        <div class="listas-search-wrap">
+                            <span class="material-icons-outlined listas-search-icon">search</span>
+                            <input
+                                type="text"
+                                id="buscadorListas"
+                                class="listas-search-input"
+                                placeholder="Busca por nombre o palabra..."
+                                autocomplete="off"
+                                maxlength="100">
+                            <button class="listas-search-clear" id="limpiarBusqueda" aria-label="Limpiar búsqueda" style="display:none;">
+                                <span class="material-icons-outlined">close</span>
+                            </button>
+                        </div>
                     </div>
 
                     <button class="crear-lista-btn" data-logueado="<?= $usuario_logueado ? 'true' : 'false' ?>">

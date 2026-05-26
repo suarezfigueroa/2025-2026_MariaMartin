@@ -122,10 +122,11 @@ if (!in_array($tab, ['mis_amigos', 'buscar', 'pendientes'])) {
         <section class="tab-panel <?= $tab === 'mis_amigos' ? 'active' : '' ?>"
           id="panel-mis_amigos">
 
-          <div class="search-bar">
-            <span class="material-icons-outlined">search</span>
-            <input type="text" id="buscadorAmigos" placeholder="Buscar entre tus amigos…"
-              autocomplete="off">
+          <div class="search-bar-gradient-wrap">
+              <div class="search-bar">
+                  <span class="material-icons-outlined">search</span>
+                  <input type="text" id="buscadorAmigos" placeholder="Busca entre tus amigos" autocomplete="off">
+              </div>
           </div>
 
           <div class="amigos-grid" id="gridAmigos">
