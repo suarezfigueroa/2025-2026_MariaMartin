@@ -217,6 +217,7 @@ Backend
 Servidor
 │
 └── Apache + InfinityFree
+```
 <br>
 
 **HTML5 y CSS3:**
