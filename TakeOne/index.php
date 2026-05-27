@@ -51,75 +51,81 @@
   </section>
 
   <!-- Features Section -->
-  <section class="features-section" id="features">
-    <div class="features-container">
-      <div class="section-header">
-        <h2 class="features-title">Todo lo que necesitas en un solo lugar</h2>
+    <section class="features-section" id="features">
+      <div class="features-container">
+        <div class="section-header">
+          <h2 class="features-title">Todo lo que necesitas en un solo lugar</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <img src="img/pelicula.png" alt="Explora películas">
+            </div>
+            <h3 class="feature-title">Explora películas</h3>
+            <p class="feature-description">
+              Descubre miles de películas, filtra por género, año, país y
+              plataforma. Encuentra tu próxima película favorita con facilidad.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <img src="img/listas.png" alt="Crea tus listas">
+            </div>
+            <h3 class="feature-title">Crea tus listas</h3>
+            <p class="feature-description">
+              Organiza tus películas favoritas en listas personalizadas.
+              Compártelas con la comunidad y descubre las listas de otros
+              usuarios.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <img src="img/comunidad.png" alt="Únete a la comunidad">
+            </div>
+            <h3 class="feature-title">Debate y recomienda</h3>
+            <p class="feature-description">
+              Haz amigos, únete a grupos temáticos y participa
+              en debates sobre tus películas favoritas.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <img src="img/sugerencias.png" alt="Sugerencias personalizadas">
+            </div>
+            <h3 class="feature-title">Sugerencias personalizadas</h3>
+            <p class="feature-description">
+              ¿No sabes qué ver? Descubre películas recomendadas según
+              tus gustos o déjate sorprender por una selección aleatoria pensada para ti.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <img src="img/noticias.png" alt="Mantente informado">
+            </div>
+            <h3 class="feature-title">Mantente informado</h3>
+            <p class="feature-description">
+              Lee las últimas noticias del mundo del cine, entrevistas
+              exclusivas y análisis de películas.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <img src="img/valoraciones.png" alt="Valora y comenta">
+            </div>
+            <h3 class="feature-title">Valora y comenta</h3>
+            <p class="feature-description">
+              Comparte tu opinión, lee reseñas de la comunidad y descubre nuevas
+              perspectivas.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🎬</div>
-          <h3 class="feature-title">Explora películas</h3>
-          <p class="feature-description">
-            Descubre miles de películas, filtra por género, año, país y
-            plataforma. Encuentra tu próxima película favorita con facilidad.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h3 class="feature-title">Crea tus listas</h3>
-          <p class="feature-description">
-            Organiza tus películas favoritas en listas personalizadas.
-            Compártelas con la comunidad y descubre las listas de otros
-            usuarios.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">💬</div>
-          <h3 class="feature-title">Únete a la comunidad</h3>
-          <p class="feature-description">
-            Haz amigos, únete a grupos temáticos y participa
-            en debates sobre tus películas favoritas.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🎲</div>
-          <h3 class="feature-title">Sugerencias personalizadas</h3>
-          <p class="feature-description">
-            ¿No sabes qué ver? Descubre películas recomendadas según
-            tus gustos o déjate sorprender por una selección aleatoria pensada para ti.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📰</div>
-          <h3 class="feature-title">Mantente informado</h3>
-          <p class="feature-description">
-            Lee las últimas noticias del mundo del cine, entrevistas
-            exclusivas y análisis de películas.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">❤️</div>
-          <h3 class="feature-title">Valora y comenta</h3>
-          <p class="feature-description">
-            Comparte tu opinión, lee reseñas de la comunidad y descubre nuevas
-            perspectivas.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
   <!-- CTA Section -->
   <section class="index-section">
     <div class="index-container">
-      <h2 class="index-title">Únete a la comunidad</h2>
+      <h2 class="index-title">Únete a la comunidad de TakeOne</h2>
       <p class="index-description">
         Descubre películas y compártelas con una comunidad que valora las
         buenas historias.

@@ -9,6 +9,7 @@ $usuario = $_SESSION['usuario'] ?? null;
 <head>
   <title>Detrás de cámara · TakeOne</title>
   <?php require_once 'includes/head.php'; ?>
+    
   <style>
     .sobre-hero {
       min-height: 60vh;
@@ -348,6 +349,11 @@ $usuario = $_SESSION['usuario'] ?? null;
       .sobre-mision-grid {
         grid-template-columns: 1fr;
       }
+        
+      .sobre-mision-visual {
+    	height: auto;
+    	aspect-ratio: 16/9;
+  	  }
 
       .valores-grid {
         grid-template-columns: 1fr;
