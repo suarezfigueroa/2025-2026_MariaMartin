@@ -12,7 +12,7 @@
 
 <br>
 
-<img src="doc/img/mockup-portada.png" width="900">
+<img src="doc/img/mockup.gif" width="900">
 
 <br><br>
 
