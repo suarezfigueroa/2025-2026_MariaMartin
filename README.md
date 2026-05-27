@@ -199,6 +199,26 @@ relación tienen con el proyecto son:
 
 ### 6.2. Lenguajes de programación
 
+## Arquitectura
+
+```text
+Frontend
+│
+├── HTML5
+├── CSS3
+├── JavaScript
+│
+Backend
+│
+├── PHP
+├── AJAX
+├── MySQL
+│
+Servidor
+│
+└── Apache + InfinityFree
+<br>
+
 **HTML5 y CSS3:**
 utilizados para toda la parte visual de la aplicación. HTML5 estructura 
 semánticamente el contenido de cada página, mientras que CSS3 se encarga 
