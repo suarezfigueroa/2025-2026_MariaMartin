@@ -443,43 +443,30 @@ La interfaz se caracteriza por:
 
 **Página de inicio**
 ![Página de inicio](doc/img/index.jpg)
-![Página de inicio 2](doc/img/index2.jpeg)
 
 <br>
 
 **Sección principal**
-![Sección principal - Cartelera](doc/img/seccion-principal.jpeg)
-*Sliders de cartelera y próximos estrenos*
+<img src="doc/img/seccion-principal.gif" width="1000">
 
 <br>
 
-![Sección principal - Noticias](doc/img/seccion-principal-2.jpeg)
-*Noticias destacadas*
-
-<br>
-
-![Dropdown](doc/img/dropdown.jpeg)
+<img src="doc/img/dropdown.gif" width="1000">
 
 <br>
 
 **Detalle de película**
-![Detalle de película](doc/img/detalle-pelicula.jpeg)
-![Detalle de película 2](doc/img/detalle-pelicula-2.jpeg)
+![Detalle película](doc/img/detalle-pelicula.jpeg)
 
 <br>
 
 **Sección Sugerir**
-![Sugerir](doc/img/sugerir.jpeg)
+<img src="doc/img/sugerir.gif" width="1000">
 
 <br>
 
 **Comunidad**
-![Comunidad](doc/img/comunidad.jpeg)
-
-<br>
-
-**Perfil de usuario**
-![Perfil](doc/img/perfil.jpeg)
+<img src="doc/img/comunidad.gif" width="1000">
 
 <br>
 
