@@ -6,6 +6,10 @@
 
 <img src="doc/img/logo.png" width="160">
 
+<br> 
+
+<img src="doc/img/logo-ies.jpg" width="140">
+
 # TakeOne
 
 ### Un espacio para quienes aman las películas.
