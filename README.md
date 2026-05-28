@@ -715,7 +715,7 @@ Los archivos del proyecto se subieron mediante el **File Manager** del panel
 de control de InfinityFree, dentro de la carpeta `htdocs`, que es el
 directorio raíz del servidor web.
 
-> ⚠️ Durante este proceso se detectó un problema: al subir los archivos,
+> Durante este proceso se detectó un problema: al subir los archivos,
 > estos se colocaron dentro de una subcarpeta en lugar de en la raíz de
 > `htdocs`. Se resolvió moviendo todos los archivos al nivel correcto
 > directamente desde el File Manager.
@@ -725,7 +725,7 @@ directorio raíz del servidor web.
 Se creó la base de datos desde el panel de InfinityFree y se importó el
 script SQL con la estructura y los datos iniciales del proyecto.
 
-> ⚠️ Se detectó que InfinityFree no permite el uso de **triggers** en la
+> Se detectó que InfinityFree no permite el uso de **triggers** en la
 > base de datos. Para resolverlo, la lógica que estaba implementada en los
 > triggers se trasladó directamente al código PHP, manteniéndose así la
 > misma funcionalidad sin depender de características no soportadas por
