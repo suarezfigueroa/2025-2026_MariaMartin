@@ -8,7 +8,7 @@
 
 <br><br>
 
-<img src="doc/img/logo-ies.jpg" width="140">
+<img src="doc/img/logo-ies.jpg" width="150">
 
 # TakeOne
 
