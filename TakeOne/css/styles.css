@@ -1233,8 +1233,9 @@ footer.site-footer {
   font-weight: 600;
 }
 
-.heart-footer {
-  font-size: 0.8rem;
+.heart-footer::after {
+  content: '♥\FE0E'; /* FE0E fuerza variante de texto (sin color) */
+  color: white;
 }
 
 

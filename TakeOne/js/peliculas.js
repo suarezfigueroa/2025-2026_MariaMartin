@@ -1,14 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ── Menú hamburguesa ─────────────────────────────────────────
-  const hamburger = document.querySelector(".hamburger");
-  const navCenter = document.querySelector(".nav-center");
-
-  if (hamburger) {
-    hamburger.addEventListener("click", () => {
-      navCenter.classList.toggle("active");
-    });
-  }
-
+  
   // ── Dropdowns de filtros ──────────────────────────────────────
   document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {

@@ -198,4 +198,5 @@ $totalBadge = $numPendientesHeader + $numMensajesHeader;
       </div>
     </nav>
   </div>
+    <script src="js/header.js"></script>
 </header>

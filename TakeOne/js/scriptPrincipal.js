@@ -5,13 +5,6 @@ window.addEventListener("load", () => {
   });
 });
 
-const hamburger = document.querySelector(".hamburger");
-const navCenter = document.querySelector(".nav-center");
-
-hamburger.addEventListener("click", () => {
-  navCenter.classList.toggle("active");
-});
-
 // Sistema de carruseles
 function setupCarousel(wrapperIndex, leftBtnId, rightBtnId) {
   const wrappers = document.querySelectorAll(".slider-wrapper");

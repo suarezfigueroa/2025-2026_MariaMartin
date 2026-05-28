@@ -20,7 +20,7 @@
     <div class="footer-bottom">
       <span class="footer-copyright">© <?php echo date('Y'); ?> TakeOne</span>
       <span class="footer-separator">•</span>
-      <span>Hecho con <span class="heart-footer">♥</span></span>
+      <span>Hecho con <span class="heart-footer"></span></span>
 
       <div class="footer-social">
         <a href="#" aria-label="Instagram">
