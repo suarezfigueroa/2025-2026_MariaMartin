@@ -1,4 +1,4 @@
-# Proyecto Fin de Ciclo Desarrollo de Apliciones Web
+# Proyecto Fin de Ciclo Desarrollo de Aplicaciones Web
 
 ## 1. Portada
 
