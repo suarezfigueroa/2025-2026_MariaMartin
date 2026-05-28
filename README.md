@@ -6,7 +6,7 @@
 
 <img src="doc/img/logo.png" width="160">
 
-<br> 
+<br><br>
 
 <img src="doc/img/logo-ies.jpg" width="140">
 
