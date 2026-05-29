@@ -4,11 +4,11 @@
 
 <div align="center">
 
-<img src="doc/img/logo.png" width="160">
+<img src="doc/img/logo-ies.jpg" width="150">
 
 <br><br>
 
-<img src="doc/img/logo-ies.jpg" width="150">
+<img src="doc/img/logo.png" width="160">
 
 # TakeOne
 
