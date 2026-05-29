@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="doc/img/logo-ies.jpg" width="150">
+<img src="doc/img/logo-ies.jpg" width="180">
 
 <br><br>
 
