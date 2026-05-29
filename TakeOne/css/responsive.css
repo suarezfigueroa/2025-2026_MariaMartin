@@ -429,6 +429,11 @@ img {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 
+  .btn-ver-mas,
+  .btn-otra {
+    margin-bottom: 0.75rem;
+  }
+
   /* ── COMUNIDAD ── */
   .community-hero h1 {
     font-size: 2rem;
@@ -1508,5 +1513,66 @@ img {
   .filtro-btn {
     font-size: 0.75rem;
     padding: 0.3rem 0.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .content-section,
+  .two-column-grid,
+  .two-column-grid > div,
+  .glass-card,
+  .info-card-gradient,
+  .cast-grid,
+  .cast-card-new {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .content-section {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    overflow-x: hidden !important;
+  }
+
+  .info-card-gradient {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .info-value,
+  .cast-role,
+  .cast-name-new {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-send {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    flex: 0 0 44px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+  }
+
+  .btn-send .material-icons-outlined {
+    font-size: 1.35rem !important;
+    line-height: 1 !important;
+  }
+
+  .comment-form-new {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .comment-input-new {
+    min-width: 0 !important;
   }
 }
