@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-05-2026 a las 12:00:35
+-- Tiempo de generación: 29-05-2026 a las 13:19:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -188,7 +188,12 @@ INSERT INTO `historial_sugerencias` (`id_historial`, `id_usuario`, `id_pelicula`
 (24, 1, 44, '2026-05-12 13:14:02'),
 (25, 1, 37, '2026-05-12 13:14:08'),
 (26, 1, 162, '2026-05-12 13:14:19'),
-(27, 1, 48, '2026-05-18 11:00:56');
+(27, 1, 48, '2026-05-18 11:00:56'),
+(28, 1, 246, '2026-05-29 10:00:50'),
+(29, 1, 225, '2026-05-29 10:35:45'),
+(30, 1, 82, '2026-05-29 11:06:39'),
+(31, 1, 86, '2026-05-29 11:20:16'),
+(32, 1, 130, '2026-05-29 11:20:22');
 
 --
 -- Volcado de datos para la tabla `listas`
