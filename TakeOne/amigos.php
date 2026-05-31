@@ -166,7 +166,7 @@ if (!in_array($tab, ['mis_amigos', 'buscar', 'pendientes'])) {
 
   <script>
     // ─── Estado ────────────────────────────────────────────────────────────────
-    const API = 'api/amigos-api.php';
+    const API = 'ajax/amigos-api.php';
     const mensajesNoLeidosPorAmigo = <?= json_encode($mensajesNoLeidosPorAmigo, JSON_UNESCAPED_UNICODE) ?>;
     let pendienteEliminar = null;
 
@@ -241,7 +241,7 @@ if (!in_array($tab, ['mis_amigos', 'buscar', 'pendientes'])) {
       </a>
       <a href="perfil-amigo.php?id=${u.id}" class="card-username">${u.username}</a>
       <div class="card-actions">
-        <a href="chat-privado.php?id=${u.id}" class="btn-icon-sm chat-btn-with-badge" title="Abrir chat">
+        <a href="privado-mensajes.php?id=${u.id}" class="btn-icon-sm chat-btn-with-badge" title="Abrir chat">
           <span class="material-icons-outlined">chat</span>
           ${Number(mensajesNoLeidosPorAmigo[u.id] || 0) > 0 ? '<span class="chat-icon-badge">!</span>' : ''}
         </a>

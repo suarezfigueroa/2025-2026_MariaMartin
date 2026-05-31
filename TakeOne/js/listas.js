@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function buscarListas(q) {
     try {
       const res = await fetch(
-        `api/buscar-listas.php?q=${encodeURIComponent(q)}`,
+        `ajax/buscar-listas.php?q=${encodeURIComponent(q)}`,
       );
       const data = await res.json();
 
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append("visibilidad", visibilidad);
       if (archivo) formData.append("imagen", archivo);
 
-      const res = await fetch("api/crear-lista.php", {
+      const res = await fetch("ajax/crear-lista.php", {
         method: "POST",
         body: formData,
       });

@@ -46,14 +46,6 @@ a { text-decoration: none; color: inherit; }
     align-items: center;
     gap: 8px;
 }
-
-.admin-sidebar__logo {
-    padding: 18px 16px 14px;
-    border-bottom: 0.5px solid rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
  
 .admin-sidebar__logo-img {
     width: 32px;
@@ -1385,7 +1377,6 @@ input[type=checkbox] { accent-color: #534AB7; width: 14px; height: 14px; cursor:
                         text-decoration: none; display: inline-flex; align-items: center; }
 .admin-btn--ghost   { background: none; color: #5f5e5a; }
 .admin-btn--ghost:hover { background: #f1efe8; }
-
 
 /* ── IMDB ────────────────────────────────────── */
 .admin-imdb-rating {

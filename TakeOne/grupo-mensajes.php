@@ -279,7 +279,7 @@ $miembros = $stmtMiembros->fetchAll(PDO::FETCH_ASSOC);
         const ID_USUARIO = <?php echo $id_usuario; ?>;
         const ES_MIEMBRO = <?php echo $es_miembro ? 'true' : 'false'; ?>;
     </script>
-    <script src="js/chat-grupo.js"></script>
+    <script src="js/grupo-mensajes.js"></script>
 </body>
 
 </html>

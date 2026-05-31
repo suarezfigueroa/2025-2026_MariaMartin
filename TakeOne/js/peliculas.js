@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   // ── Dropdowns de filtros ──────────────────────────────────────
   document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function buscarPeliculas(q) {
     try {
       const res = await fetch(
-        `api/buscar-peliculas.php?q=${encodeURIComponent(q)}`,
+        `ajax/buscar-peliculas.php?q=${encodeURIComponent(q)}`,
       );
       const data = await res.json();
       renderizarPeliculas(data, q);

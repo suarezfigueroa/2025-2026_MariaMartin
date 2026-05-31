@@ -135,7 +135,7 @@ $amigosDelVisto = $stmtAmigosVisto->fetchAll(PDO::FETCH_ASSOC);
           <!-- Acciones de amistad -->
           <div class="perfil-acciones" id="perfil-acciones">
             <?php if ($sonAmigos): ?>
-              <a href="chat-privado.php?id=<?= $idVisto ?>" class="btn-accion btn-chat">
+              <a href="privado-mensajes.php?id=<?= $idVisto ?>" class="btn-accion btn-chat">
                 <span class="material-icons-outlined">chat</span>
                 Abrir chat
               </a>

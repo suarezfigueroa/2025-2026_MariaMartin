@@ -11,7 +11,7 @@
 
       <!-- Enlaces footer -->
       <nav class="footer-nav">
-        <a href="sobre-nosotros.php">Detrás de cámara</a>
+        <a href="detras-de-camara.php">Detrás de cámara</a>
         <a href="contacto.php">Contacto</a>
         <a href="terminos-de-servicio.php">Términos de servicio</a>
       </nav>

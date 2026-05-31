@@ -230,9 +230,9 @@ if (!isset($_SESSION['usuario']['id'])) {
 
     <script>
         window.takeonePerfilConfig = {
-            getPerfilUrl: 'api/obtener-perfil.php',
-            savePerfilUrl: 'api/guardar-perfil.php',
-            searchMoviesUrl: 'api/buscar-peliculas-perfil.php'
+            getPerfilUrl: 'ajax/obtener-perfil.php',
+            savePerfilUrl: 'ajax/guardar-perfil.php',
+            searchMoviesUrl: 'ajax/buscar-peliculas-perfil.php'
         };
     </script>
     <script src="js/editar-peliculas-generos.js"></script>

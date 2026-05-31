@@ -7,20 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const guardarBtn = document.getElementById("guardarListaBtn");
   const mensajeDiv = document.getElementById("modal-mis-listas-mensaje");
 
-  // --- Previsualización de imagen ---
   const portadaUpload = document.getElementById("portadaUpload");
   const portadaInput = document.getElementById("listaPortada");
   const portadaPreviewImg = document.getElementById("portadaPreviewImg");
   const portadaPlaceholder = document.getElementById("portadaPlaceholder");
 
-  // Abrir selector de archivo al hacer clic en la zona
   portadaUpload?.addEventListener("click", () => portadaInput.click());
 
-  // Mostrar previsualización cuando el usuario elige una imagen
   portadaInput?.addEventListener("change", () => {
     const archivo = portadaInput.files[0];
     if (!archivo) return;
-
     const reader = new FileReader();
     reader.onload = (e) => {
       portadaPreviewImg.src = e.target.result;
@@ -30,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(archivo);
   });
 
-  // --- Abrir modal ---
   function abrirModal() {
     limpiarModal();
     modalOverlay.style.display = "flex";
@@ -39,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   crearListaBtn?.addEventListener("click", abrirModal);
   crearPrimeraBtn?.addEventListener("click", abrirModal);
 
-  // --- Cerrar modal ---
   function cerrarModal() {
     modalOverlay.style.display = "none";
     limpiarModal();
@@ -51,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modalOverlay) cerrarModal();
   });
 
-  // --- Limpiar campos ---
   function limpiarModal() {
     document.getElementById("listaNombre").value = "";
     document.getElementById("listaDescripcion").value = "";
@@ -59,9 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     portadaPreviewImg.src = "";
     portadaPreviewImg.style.display = "none";
     portadaPlaceholder.style.display = "flex";
-    document.querySelector(
-      'input[name="visibilidad"][value="publica"]',
-    ).checked = true;
+    document.querySelector('input[name="visibilidad"][value="publica"]').checked = true;
     mensajeDiv.className = "alert d-none";
     mensajeDiv.textContent = "";
   }
@@ -71,15 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
     mensajeDiv.textContent = texto;
   }
 
-  // --- Guardar lista ---
   guardarBtn?.addEventListener("click", async () => {
     const titulo = document.getElementById("listaNombre").value.trim();
-    const descripcion = document
-      .getElementById("listaDescripcion")
-      .value.trim();
+    const descripcion = document.getElementById("listaDescripcion").value.trim();
     const visibilidad =
-      document.querySelector('input[name="visibilidad"]:checked')?.value ||
-      "publica";
+      document.querySelector('input[name="visibilidad"]:checked')?.value || "publica";
     const archivo = portadaInput.files[0] || null;
 
     if (!titulo) {
@@ -91,15 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
     guardarBtn.textContent = "Guardando...";
 
     try {
-      // FormData soporta archivos directamente
       const formData = new FormData();
       formData.append("titulo", titulo);
       formData.append("descripcion", descripcion);
       formData.append("visibilidad", visibilidad);
       if (archivo) formData.append("imagen", archivo);
 
-      const res = await fetch("api/crear-lista.php", {
+      const res = await fetch("ajax/crear-lista.php", {
         method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
         body: formData,
       });
       const data = await res.json();
@@ -118,18 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Eliminar lista ---
   document.querySelector(".mis-listas-grid")?.addEventListener("click", (e) => {
     const card = e.target.closest(".mis-lista-card");
     if (!card) return;
     const idLista = card.dataset.id;
 
     if (e.target.closest(".btn-eliminar-lista")) {
-      if (
-        confirm(
-          "¿Seguro que quieres eliminar esta lista? Esta acción no se puede deshacer.",
-        )
-      ) {
+      if (confirm("¿Seguro que quieres eliminar esta lista? Esta acción no se puede deshacer.")) {
         eliminarLista(idLista, card);
       }
     }
@@ -140,8 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData();
       formData.append("id_lista", idLista);
 
-      const res = await fetch("eliminar-lista.php", {
+      const res = await fetch("ajax/eliminar-lista.php", {
         method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
         body: formData,
       });
       const data = await res.json();
@@ -150,15 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cardEl.remove();
         const statNumber = document.querySelector(".stat-number");
         if (statNumber)
-          statNumber.textContent = Math.max(
-            0,
-            parseInt(statNumber.textContent) - 1,
-          );
+          statNumber.textContent = Math.max(0, parseInt(statNumber.textContent) - 1);
         if (!document.querySelector(".mis-lista-card")) {
           document.querySelector(".mis-listas-grid")?.remove();
-          document
-            .querySelector(".empty-state-mis-listas")
-            ?.style.removeProperty("display");
+          document.querySelector(".empty-state-mis-listas")?.style.removeProperty("display");
         }
       } else {
         alert(data.mensaje || "No se pudo eliminar la lista.");

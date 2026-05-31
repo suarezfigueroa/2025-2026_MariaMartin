@@ -42,7 +42,7 @@ let animacionEnCurso = false;
 
 function cargarHistorial() {
     if (USUARIO_ID) {
-        fetch('api/sugerir-api.php?tipo=historial')
+        fetch('ajax/sugerir-api.php?tipo=historial')
             .then(r => r.json())
             .then(data => {
                 if (data.historial && data.historial.length > 0) {
@@ -82,7 +82,7 @@ async function cargarGenerosModal() {
     if (!grid) return;
 
     try {
-        const res = await fetch('api/generos-api.php');
+        const res = await fetch('ajax/generos-api.php');
         if (!res.ok) throw new Error('HTTP ' + res.status);
 
         const data = await res.json();
@@ -111,7 +111,7 @@ async function cargarGenerosModal() {
 }
 
 async function obtenerPeliculaDesdeAPI(tipo, generoIds = []) {
-    let url = `api/sugerir-api.php?tipo=${tipo}`;
+    let url = `ajax/sugerir-api.php?tipo=${tipo}`;
 
     if (tipo === 'generos' && generoIds.length > 0) {
         url += `&generos=${generoIds.join(',')}`;
@@ -151,7 +151,7 @@ async function animarBaraja(peliculaFinal) {
     let postersBarajado = [peliculaFinal.poster];
 
     try {
-        const res = await fetch('api/sugerir-api.php?tipo=posters_random');
+        const res = await fetch('ajax/sugerir-api.php?tipo=posters_random');
         const data = await res.json();
 
         if (data.posters && data.posters.length > 0) {

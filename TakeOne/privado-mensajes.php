@@ -124,7 +124,7 @@ $inicialOtro = strtoupper(substr($otro['username'], 0, 1));
     <script>
         const ID_OTRO = <?= $idOtro ?>;
         const ID_YO = <?= $yo ?>;
-        const API = 'api/chat-privado-api.php';
+        const API = 'ajax/privado-mensajes-api.php';
 
         let ultimoId = 0;
         let intervalo = null;
@@ -183,7 +183,9 @@ $inicialOtro = strtoupper(substr($otro['username'], 0, 1));
 
         // ── Cargar mensajes ───────────────────────────────────────────────────────
         async function cargarMensajes() {
-            const res = await fetch(`${API}?accion=mensajes&id_otro=${ID_OTRO}&desde=${ultimoId}`);
+            const res = await fetch(`${API}?accion=mensajes&id_otro=${ID_OTRO}&desde=${ultimoId}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            });
             const data = await res.json();
             if (!data.ok || !data.mensajes.length) return;
 
@@ -218,7 +220,8 @@ $inicialOtro = strtoupper(substr($otro['username'], 0, 1));
             const res = await fetch(API, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
                 },
                 body: JSON.stringify({
                     accion: 'enviar',

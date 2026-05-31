@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
           fd.append("id_pelicula", idPelicula);
           fd.append("estado", estadoFinal);
 
-          const res = await fetch("api/actualizar-estado-pelicula.php", {
+          const res = await fetch("ajax/actualizar-estado-pelicula.php", {
             method: "POST",
             body: fd,
           });
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fd.append("id_pelicula", idPelicula);
       fd.append("valoracion", valor);
 
-      fetch("api/valoracion.php", { method: "POST", body: fd })
+      fetch("ajax/valoracion.php", { method: "POST", body: fd })
         .then((r) => r.json())
         .then((data) => {
           if (data.success) {
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const fd = new FormData();
       fd.append("id_pelicula", idPelicula);
 
-      fetch("api/valoracion.php", { method: "POST", body: fd })
+      fetch("ajax/valoracion.php", { method: "POST", body: fd })
         .then((r) => r.json())
         .then((data) => {
           if (data.success) {
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fd.append("id_lista", idLista);
         fd.append("id_pelicula", idPelicula);
 
-        const res = await fetch("api/guardar-pelicula-lista.php", {
+        const res = await fetch("ajax/guardar-pelicula-lista.php", {
           method: "POST",
           body: fd,
         });
@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fd.append("id_comentario", idComentario);
         fd.append("comentario", nuevoTexto);
 
-        const res = await fetch("api/comentarios-acciones.php", {
+        const res = await fetch("ajax/comentarios-acciones.php", {
           method: "POST",
           body: fd,
         });
@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fd.append("accion", "eliminar");
       fd.append("id_comentario", comentarioAEliminar);
 
-      const res = await fetch("api/comentarios-acciones.php", {
+      const res = await fetch("ajax/comentarios-acciones.php", {
         method: "POST",
         body: fd,
       });
@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fd.append("comentario", texto);
         if (checkSpoiler?.checked) fd.append("es_spoiler", "1");
 
-        const res = await fetch("api/guardar-comentario.php", {
+        const res = await fetch("ajax/guardar-comentario.php", {
           method: "POST",
           body: fd,
         });
@@ -716,7 +716,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 fd2.append("accion", "editar");
                 fd2.append("id_comentario", idComentario);
                 fd2.append("comentario", nuevoTexto);
-                const r2 = await fetch("api/comentarios-acciones.php", {
+                const r2 = await fetch("ajax/comentarios-acciones.php", {
                   method: "POST",
                   body: fd2,
                 });

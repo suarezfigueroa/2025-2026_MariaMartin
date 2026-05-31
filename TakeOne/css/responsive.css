@@ -1576,3 +1576,46 @@ img {
     min-width: 0 !important;
   }
 }
+
+
+@media (max-width: 576px) {
+
+  .listas-hero {
+    padding: 2rem 1.5rem !important;
+  }
+
+  .listas-hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .listas-hero-text {
+    padding-left: 1.5rem !important;
+  }
+
+  .listas-hero-text h1,
+  .listas-hero-text p {
+    text-align: left !important;
+  }
+
+  .listas-search-gradient-wrap,
+  .crear-lista-btn {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .listas-search-gradient-wrap {
+    margin-top: 2rem !important;
+  }
+
+  .listas-search-wrap {
+    width: 100% !important;
+  }
+
+  .crear-lista-btn {
+    margin-top: 1.5rem !important;
+    justify-content: center !important;
+  }
+}

@@ -370,7 +370,7 @@ h2.section-title {
 
 .feature-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
@@ -454,9 +454,6 @@ h2.section-title {
   box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4) !important;
   transform: translateY(-5px);
 }
-
-
-/* Responsive */
 
 
 /* ==================================== SECCIÓN PÁGINA PRINCIPAL ==================================== */
@@ -1133,8 +1130,6 @@ footer.site-footer {
   cursor: pointer;
 }
 
-/* Media query para móviles */
-
 
 /* FOOTER */
 .site-footer {
@@ -1621,7 +1616,7 @@ footer.site-footer {
   color: white;
   border: none;
   padding: 0.7rem 1.5rem;
-  margin-left: 25px;
+  margin-right: 25px;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -1634,7 +1629,6 @@ footer.site-footer {
 
 .crear-lista-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 10px var(--accent-light);
 }
 
 .listas-grid {
@@ -1854,6 +1848,12 @@ footer.site-footer {
   transition: transform 0.1s ease;
   aspect-ratio: 2/3;
   object-fit: cover;
+}
+
+#peliculaPoster {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .pelicula-info {
@@ -8080,8 +8080,12 @@ a.btn-new:hover {
   transition: border-color .2s;
 }
 
+.search-bar:focus-within {
+  border-color: transparent;
+}
+
 .search-bar .material-icons-outlined {
-  color: var(--color-text-muted, #aaa);
+  color: white;
   font-size: 1.2rem;
 }
 
@@ -8095,7 +8099,7 @@ a.btn-new:hover {
 }
 
 .search-bar input::placeholder {
-  color: var(--color-text-muted, #777);
+  color: white;
 }
 
 /* ── Grid de cards ────────────────────────────────────────────── */

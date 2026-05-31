@@ -69,7 +69,9 @@ if (ES_MIEMBRO) {
   // ── Carga inicial ──────────────────────────────────────────
   async function cargarMensajes() {
     try {
-      const res = await fetch(`api/mensajes-obtener.php?id_grupo=${ID_GRUPO}`);
+      const res = await fetch(`ajax/mensajes-obtener.php?id_grupo=${ID_GRUPO}`, {
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+      });
       const data = await res.json();
 
       chatMensajes.innerHTML = "";
@@ -94,7 +96,8 @@ if (ES_MIEMBRO) {
   async function polling() {
     try {
       const res = await fetch(
-        `api/mensajes-obtener.php?id_grupo=${ID_GRUPO}&desde_id=${ultimoIdMensaje}`,
+        `ajax/mensajes-obtener.php?id_grupo=${ID_GRUPO}&desde_id=${ultimoIdMensaje}`,
+        { headers: { "X-Requested-With": "XMLHttpRequest" } },
       );
       const data = await res.json();
 
@@ -130,8 +133,9 @@ if (ES_MIEMBRO) {
       formData.append("id_grupo", ID_GRUPO);
       formData.append("mensaje", texto);
 
-      const res = await fetch("api/mensajes-enviar.php", {
+      const res = await fetch("ajax/mensajes-enviar.php", {
         method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
         body: formData,
       });
       const data = await res.json();
@@ -163,9 +167,12 @@ if (ES_MIEMBRO) {
     ?.addEventListener("click", async () => {
       if (!confirm("¿Seguro que quieres salir del grupo?")) return;
 
-      const res = await fetch("api/grupo-unirse.php", {
+      const res = await fetch("ajax/grupo-unirse.php", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest",
+        },
         body: `id_grupo=${ID_GRUPO}&accion=salir`,
       });
       const data = await res.json();
@@ -176,9 +183,12 @@ if (ES_MIEMBRO) {
   document
     .getElementById("btnUnirseDesdeChat")
     ?.addEventListener("click", async () => {
-      const res = await fetch("api/grupo-unirse.php", {
+      const res = await fetch("ajax/grupo-unirse.php", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest",
+        },
         body: `id_grupo=${ID_GRUPO}&accion=unirse`,
       });
       const data = await res.json();
@@ -283,8 +293,9 @@ guardarEditarBtn?.addEventListener("click", async () => {
     formData.append("tipo", tipo);
     if (archivo) formData.append("imagen", archivo);
 
-    const res = await fetch("api/editar-grupo.php", {
+    const res = await fetch("ajax/editar-grupo.php", {
       method: "POST",
+      headers: { "X-Requested-With": "XMLHttpRequest" },
       body: formData,
     });
     const data = await res.json();
@@ -360,14 +371,14 @@ guardarEditarMensaje?.addEventListener("click", async () => {
     formData.append("id_mensaje", idMensajeEditando);
     formData.append("mensaje", texto);
 
-    const res = await fetch("api/mensajes-editar.php", {
+    const res = await fetch("ajax/mensajes-editar.php", {
       method: "POST",
+      headers: { "X-Requested-With": "XMLHttpRequest" },
       body: formData,
     });
     const data = await res.json();
 
     if (data.ok) {
-      // Actualizar el texto en el DOM sin recargar
       const burbuja = chatMensajes.querySelector(
         `.chat-burbuja[data-id="${idMensajeEditando}"]`,
       );
@@ -408,14 +419,14 @@ document.querySelectorAll(".btn-expulsar-miembro").forEach((btn) => {
       formData.append("id_grupo", ID_GRUPO);
       formData.append("id_usuario", idExpulsado);
 
-      const res = await fetch("api/expulsar-miembro.php", {
+      const res = await fetch("ajax/expulsar-miembro.php", {
         method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
         body: formData,
       });
       const data = await res.json();
 
       if (data.ok) {
-        // Eliminar el li del miembro del sidebar sin recargar
         btn.closest("li").remove();
       } else {
         alert(data.msg || "No se pudo expulsar al miembro.");

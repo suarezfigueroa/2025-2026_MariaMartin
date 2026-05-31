@@ -16,9 +16,12 @@ async function handleJoinBtn(e) {
   const unido = btn.classList.contains("joined");
   const accion = unido ? "salir" : "unirse";
 
-  const res = await fetch("api/grupo-unirse.php", {
+  const res = await fetch("ajax/grupo-unirse.php", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-Requested-With": "XMLHttpRequest",
+    },
     body: `id_grupo=${idGrupo}&accion=${accion}`,
   });
   const data = await res.json();
@@ -85,13 +88,11 @@ function renderGrupos(grupos) {
     )
     .join("");
 
-  // Reasignar eventos a los botones nuevos
   groupsContainer.querySelectorAll(".join-btn").forEach((btn) => {
     btn.addEventListener("click", handleJoinBtn);
   });
 }
 
-// Abrir chat al hacer click en la card CUANDO EL USUARIO ESTÁ UNIDO
 function asignarClickCards() {
   document.querySelectorAll(".group-card").forEach((card) => {
     card.addEventListener("click", (e) => {
@@ -99,7 +100,7 @@ function asignarClickCards() {
       const id = card.dataset.id;
       const btn = card.querySelector(".join-btn");
       if (btn && btn.classList.contains("joined")) {
-        window.location.href = `chat-grupo.php?id=${id}`;
+        window.location.href = `grupo-mensajes.php?id=${id}`;
       }
     });
   });
@@ -109,7 +110,9 @@ asignarClickCards();
 
 async function buscarGrupos(q) {
   try {
-    const res = await fetch(`api/buscar-grupos.php?q=${encodeURIComponent(q)}`);
+    const res = await fetch(`ajax/buscar-grupos.php?q=${encodeURIComponent(q)}`, {
+      headers: { "X-Requested-With": "XMLHttpRequest" },
+    });
     const data = await res.json();
     groupsHeader.textContent = `${data.length} resultado${data.length !== 1 ? "s" : ""} para "${q}"`;
     renderGrupos(data);
@@ -224,8 +227,9 @@ guardarGrupoBtn?.addEventListener("click", async () => {
     formData.append("tipo", tipo);
     if (archivo) formData.append("imagen", archivo);
 
-    const res = await fetch("api/crear-grupo.php", {
+    const res = await fetch("ajax/crear-grupo.php", {
       method: "POST",
+      headers: { "X-Requested-With": "XMLHttpRequest" },
       body: formData,
     });
     const data = await res.json();

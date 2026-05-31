@@ -1,6 +1,7 @@
 <?php
 require_once '_guard.php';
 require_once '../includes/conexion.php';
+date_default_timezone_set('UTC');
 
 $mensaje = '';
 $error   = '';

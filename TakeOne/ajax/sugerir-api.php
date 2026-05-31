@@ -10,6 +10,9 @@ $tipo = $_GET['tipo'] ?? 'aleatoria';
 $generos = $_GET['generos'] ?? '';
 $id_usuario = isset($_SESSION['usuario']['id']) ? (int)$_SESSION['usuario']['id'] : null;
 
+// Condición reutilizable para excluir próximos estrenos (sin IMDB ni duración)
+$no_estreno = "NOT (p.imdb IS NULL AND p.duracion IS NULL)";
+
 try {
     $pelicula = null;
 
@@ -20,6 +23,7 @@ try {
             $stmt = $pdo->query("
                 SELECT poster FROM peliculas
                 WHERE poster IS NOT NULL AND poster != ''
+                AND NOT (imdb IS NULL AND duracion IS NULL)
                 ORDER BY RAND()
                 LIMIT 20
             ");
@@ -27,7 +31,7 @@ try {
             echo json_encode(['posters' => $posters]);
             exit;
 
-            // Acción historial
+        // Acción historial
         case 'historial':
             if (!$id_usuario) {
                 echo json_encode(['historial' => []]);
@@ -49,7 +53,7 @@ try {
             echo json_encode(['historial' => $stmt->fetchAll(PDO::FETCH_ASSOC)]);
             exit;
 
-            // ── 1. ALEATORIA pura ────────────────────────────────────────────────
+        // ── 1. ALEATORIA pura ────────────────────────────────────────────────
         case 'aleatoria':
             if ($id_usuario) {
                 $stmt = $pdo->prepare("
@@ -62,6 +66,7 @@ try {
                         SELECT id_pelicula FROM usuarios_peliculas
                         WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
                     )
+                    AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
                     GROUP BY p.id_pelicula
                     ORDER BY RAND()
                     LIMIT 1
@@ -74,6 +79,7 @@ try {
                     FROM peliculas p
                     LEFT JOIN peliculas_generos pg ON p.id_pelicula = pg.id_pelicula
                     LEFT JOIN generos g            ON pg.id_genero  = g.id_genero
+                    WHERE NOT (p.imdb IS NULL AND p.duracion IS NULL)
                     GROUP BY p.id_pelicula
                     ORDER BY RAND()
                     LIMIT 1
@@ -97,6 +103,7 @@ try {
                             SELECT id_pelicula FROM usuarios_peliculas
                             WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
                         )
+                        AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
                         GROUP BY p.id_pelicula
                         ORDER BY RAND()
                         LIMIT 1
@@ -109,6 +116,7 @@ try {
                         FROM peliculas p
                         LEFT JOIN peliculas_generos pg ON p.id_pelicula = pg.id_pelicula
                         LEFT JOIN generos g            ON pg.id_genero  = g.id_genero
+                        WHERE NOT (p.imdb IS NULL AND p.duracion IS NULL)
                         GROUP BY p.id_pelicula
                         ORDER BY RAND()
                         LIMIT 1
@@ -141,6 +149,7 @@ try {
                     SELECT id_pelicula FROM usuarios_peliculas
                     WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
                 )
+                AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
                 GROUP BY p.id_pelicula
                 ORDER BY RAND()
                 LIMIT 1
@@ -155,77 +164,79 @@ try {
             if (!$id_usuario) {
                 // Usuario no logueado → aleatoria
                 $stmt = $pdo->query("
-                        SELECT 
-                            p.id_pelicula, 
-                            p.titulo, 
-                            p.anio, 
-                            p.sinopsis AS descripcion, 
-                            p.poster,
-                            GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ') AS generos_nombre
-                        FROM peliculas p
-                        LEFT JOIN peliculas_generos pg ON p.id_pelicula = pg.id_pelicula
-                        LEFT JOIN generos g ON pg.id_genero = g.id_genero
-                        GROUP BY p.id_pelicula
-                        ORDER BY RAND()
-                        LIMIT 1
-                    ");
+                    SELECT 
+                        p.id_pelicula, 
+                        p.titulo, 
+                        p.anio, 
+                        p.sinopsis AS descripcion, 
+                        p.poster,
+                        GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ') AS generos_nombre
+                    FROM peliculas p
+                    LEFT JOIN peliculas_generos pg ON p.id_pelicula = pg.id_pelicula
+                    LEFT JOIN generos g ON pg.id_genero = g.id_genero
+                    WHERE NOT (p.imdb IS NULL AND p.duracion IS NULL)
+                    GROUP BY p.id_pelicula
+                    ORDER BY RAND()
+                    LIMIT 1
+                ");
                 $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
                 break;
             }
 
             $pelicula = null;
 
-            // 1. intentar recomendar según géneros de películas favoritas del usuario
+            // 1. intentar recomendar según géneros de películas del usuario
             $stmt_favoritas = $pdo->prepare("
-                    SELECT id_pelicula 
-                    FROM usuarios_peliculas 
-                    WHERE id_usuario = ?
-                ");
+                SELECT id_pelicula 
+                FROM usuarios_peliculas 
+                WHERE id_usuario = ?
+            ");
             $stmt_favoritas->execute([$id_usuario]);
             $peliculas_favoritas = $stmt_favoritas->fetchAll(PDO::FETCH_COLUMN);
 
             if (!empty($peliculas_favoritas)) {
                 $stmt = $pdo->prepare("
-                        SELECT 
-                            p.id_pelicula,
-                            p.titulo,
-                            p.anio,
-                            p.sinopsis AS descripcion,
-                            p.poster,
-                            GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ') AS generos_nombre,
-                            COUNT(DISTINCT pg.id_genero) AS coincidencias_genero
-                        FROM peliculas p
-                        INNER JOIN peliculas_generos pg 
-                            ON p.id_pelicula = pg.id_pelicula
-                        INNER JOIN generos g
-                            ON pg.id_genero = g.id_genero
-                        WHERE pg.id_genero IN (
-                            SELECT DISTINCT pgf.id_genero
-                            FROM usuarios_peliculas up
-                            INNER JOIN peliculas_generos pgf 
-                                ON up.id_pelicula = pgf.id_pelicula
-                            WHERE up.id_usuario = ?
-                        )
-                        AND p.id_pelicula NOT IN (
-                            SELECT id_pelicula 
-                            FROM usuarios_peliculas 
-                            WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
-                        )
-                        GROUP BY p.id_pelicula
-                        ORDER BY coincidencias_genero DESC, RAND()
-                        LIMIT 1
-                    ");
+                    SELECT 
+                        p.id_pelicula,
+                        p.titulo,
+                        p.anio,
+                        p.sinopsis AS descripcion,
+                        p.poster,
+                        GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ') AS generos_nombre,
+                        COUNT(DISTINCT pg.id_genero) AS coincidencias_genero
+                    FROM peliculas p
+                    INNER JOIN peliculas_generos pg 
+                        ON p.id_pelicula = pg.id_pelicula
+                    INNER JOIN generos g
+                        ON pg.id_genero = g.id_genero
+                    WHERE pg.id_genero IN (
+                        SELECT DISTINCT pgf.id_genero
+                        FROM usuarios_peliculas up
+                        INNER JOIN peliculas_generos pgf 
+                            ON up.id_pelicula = pgf.id_pelicula
+                        WHERE up.id_usuario = ?
+                    )
+                    AND p.id_pelicula NOT IN (
+                        SELECT id_pelicula 
+                        FROM usuarios_peliculas 
+                        WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
+                    )
+                    AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
+                    GROUP BY p.id_pelicula
+                    ORDER BY coincidencias_genero DESC, RAND()
+                    LIMIT 1
+                ");
                 $stmt->execute([$id_usuario, $id_usuario]);
                 $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
             }
 
-            // 2. si no tiene películas favoritas, usar géneros favoritos guardados
+            // 2. si no tiene películas, usar géneros favoritos guardados
             if (!$pelicula) {
                 $stmt_generos = $pdo->prepare("
-                        SELECT id_genero 
-                        FROM usuarios_generos_favoritos 
-                        WHERE id_usuario = ?
-                    ");
+                    SELECT id_genero 
+                    FROM usuarios_generos_favoritos 
+                    WHERE id_usuario = ?
+                ");
                 $stmt_generos->execute([$id_usuario]);
                 $generos_usuario = $stmt_generos->fetchAll(PDO::FETCH_COLUMN);
 
@@ -233,31 +244,32 @@ try {
                     $ph = implode(',', array_fill(0, count($generos_usuario), '?'));
 
                     $stmt = $pdo->prepare("
-                            SELECT 
-                                p.id_pelicula,
-                                p.titulo,
-                                p.anio,
-                                p.sinopsis AS descripcion,
-                                p.poster,
-                                GROUP_CONCAT(DISTINCT g2.nombre ORDER BY g2.nombre SEPARATOR ', ') AS generos_nombre,
-                                COUNT(DISTINCT pg.id_genero) AS coincidencias_genero
-                            FROM peliculas p
-                            INNER JOIN peliculas_generos pg 
-                                ON p.id_pelicula = pg.id_pelicula
-                                AND pg.id_genero IN ($ph)
-                            LEFT JOIN peliculas_generos pg2 
-                                ON p.id_pelicula = pg2.id_pelicula
-                            LEFT JOIN generos g2 
-                                ON pg2.id_genero = g2.id_genero
-                            WHERE p.id_pelicula NOT IN (
-                                SELECT id_pelicula 
-                                FROM usuarios_peliculas 
-                                WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
-                            )
-                            GROUP BY p.id_pelicula
-                            ORDER BY coincidencias_genero DESC, RAND()
-                            LIMIT 1
-                        ");
+                        SELECT 
+                            p.id_pelicula,
+                            p.titulo,
+                            p.anio,
+                            p.sinopsis AS descripcion,
+                            p.poster,
+                            GROUP_CONCAT(DISTINCT g2.nombre ORDER BY g2.nombre SEPARATOR ', ') AS generos_nombre,
+                            COUNT(DISTINCT pg.id_genero) AS coincidencias_genero
+                        FROM peliculas p
+                        INNER JOIN peliculas_generos pg 
+                            ON p.id_pelicula = pg.id_pelicula
+                            AND pg.id_genero IN ($ph)
+                        LEFT JOIN peliculas_generos pg2 
+                            ON p.id_pelicula = pg2.id_pelicula
+                        LEFT JOIN generos g2 
+                            ON pg2.id_genero = g2.id_genero
+                        WHERE p.id_pelicula NOT IN (
+                            SELECT id_pelicula 
+                            FROM usuarios_peliculas 
+                            WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
+                        )
+                        AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
+                        GROUP BY p.id_pelicula
+                        ORDER BY coincidencias_genero DESC, RAND()
+                        LIMIT 1
+                    ");
 
                     $params = array_merge($generos_usuario, [$id_usuario]);
                     $stmt->execute($params);
@@ -265,28 +277,29 @@ try {
                 }
             }
 
-            // 3. fallback: aleatoria entre películas no vistas ni favoritas del usuario
+            // 3. fallback: aleatoria entre películas no vistas ni favoritas
             if (!$pelicula) {
                 $stmt = $pdo->prepare("
-                        SELECT 
-                            p.id_pelicula, 
-                            p.titulo, 
-                            p.anio, 
-                            p.sinopsis AS descripcion, 
-                            p.poster,
-                            GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ') AS generos_nombre
-                        FROM peliculas p
-                        LEFT JOIN peliculas_generos pg ON p.id_pelicula = pg.id_pelicula
-                        LEFT JOIN generos g ON pg.id_genero = g.id_genero
-                        WHERE p.id_pelicula NOT IN (
-                            SELECT id_pelicula 
-                            FROM usuarios_peliculas 
-                            WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
-                        )
-                        GROUP BY p.id_pelicula
-                        ORDER BY RAND()
-                        LIMIT 1
-                    ");
+                    SELECT 
+                        p.id_pelicula, 
+                        p.titulo, 
+                        p.anio, 
+                        p.sinopsis AS descripcion, 
+                        p.poster,
+                        GROUP_CONCAT(DISTINCT g.nombre ORDER BY g.nombre SEPARATOR ', ') AS generos_nombre
+                    FROM peliculas p
+                    LEFT JOIN peliculas_generos pg ON p.id_pelicula = pg.id_pelicula
+                    LEFT JOIN generos g ON pg.id_genero = g.id_genero
+                    WHERE p.id_pelicula NOT IN (
+                        SELECT id_pelicula 
+                        FROM usuarios_peliculas 
+                        WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
+                    )
+                    AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
+                    GROUP BY p.id_pelicula
+                    ORDER BY RAND()
+                    LIMIT 1
+                ");
                 $stmt->execute([$id_usuario]);
                 $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
             }

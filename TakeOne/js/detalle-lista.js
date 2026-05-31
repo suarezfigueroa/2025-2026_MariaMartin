@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const fd = new FormData();
         fd.append("id_lista", ID_LISTA);
 
-        const res = await fetch("api/toggle-like-lista.php", {
+        const res = await fetch("ajax/toggle-like-lista.php", {
           method: "POST",
+          headers: { "X-Requested-With": "XMLHttpRequest" },
           body: fd,
         });
         const data = await res.json();
 
         if (!data.ok) {
-          // Si no está logueado, redirigir al login
           if (data.mensaje?.includes("sesión")) {
             window.location.href = "login.php";
           }
@@ -32,21 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         isLiked = data.liked;
-
-        // Actualizar icono y texto
         heartIcon.textContent = isLiked ? "favorite" : "favorite_border";
         likeText.textContent = isLiked ? "Te gusta" : "Me gusta";
         btnLike.classList.toggle("liked", isLiked);
-
-        // Animación
         btnLike.style.transform = "scale(1.15)";
         setTimeout(() => (btnLike.style.transform = "scale(1)"), 200);
-
-        // Actualizar contador visible
         const contador = document.getElementById("contador-likes");
         if (contador) contador.textContent = data.total_likes;
       } catch {
-        // silencioso, no romper la UI
+        // silencioso
       } finally {
         procesando = false;
       }
@@ -73,9 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         addText.textContent = "Añadida a tus listas";
         btnAdd.classList.add("added");
         btnAdd.style.transform = "scale(1.1)";
-        setTimeout(() => {
-          btnAdd.style.transform = "scale(1)";
-        }, 200);
+        setTimeout(() => { btnAdd.style.transform = "scale(1)"; }, 200);
       } else {
         addIcon.textContent = "add";
         addIcon.style.color = "#14b8a6";
@@ -98,11 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ================================================================
-  // FUNCIONALIDAD DEL PROPIETARIO (solo si ES_PROPIETARIO === true)
+  // FUNCIONALIDAD DEL PROPIETARIO
   // ================================================================
   if (typeof ES_PROPIETARIO === "undefined" || !ES_PROPIETARIO) return;
 
-  /* ── Referencias al modal de edición ── */
   const modalEditar = document.getElementById("modalEditarLista");
   const btnAbrirEditar = document.getElementById("btnAbrirModalEditar");
   const modalEditarClose = document.getElementById("modalEditarClose");
@@ -111,20 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const mensajeEditar = document.getElementById("modal-editar-mensaje");
   const editarPortadaUpload = document.getElementById("editarPortadaUpload");
   const editarPortadaInput = document.getElementById("editarPortada");
-  const editarPortadaPreviewImg = document.getElementById(
-    "editarPortadaPreviewImg",
-  );
-  const editarPortadaPlaceholder = document.getElementById(
-    "editarPortadaPlaceholder",
-  );
+  const editarPortadaPreviewImg = document.getElementById("editarPortadaPreviewImg");
+  const editarPortadaPlaceholder = document.getElementById("editarPortadaPlaceholder");
 
-  // Si algún elemento clave no existe, salir silenciosamente
   if (!modalEditar || !btnAbrirEditar) return;
 
-  /* ── Previsualización de portada ── */
-  editarPortadaUpload.addEventListener("click", () =>
-    editarPortadaInput.click(),
-  );
+  editarPortadaUpload.addEventListener("click", () => editarPortadaInput.click());
 
   editarPortadaInput.addEventListener("change", () => {
     const archivo = editarPortadaInput.files[0];
@@ -138,21 +121,15 @@ document.addEventListener("DOMContentLoaded", function () {
     reader.readAsDataURL(archivo);
   });
 
-  /* ── Pestañas ── */
   document.querySelectorAll(".editar-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
-      document
-        .querySelectorAll(".editar-tab")
-        .forEach((t) => t.classList.remove("active"));
+      document.querySelectorAll(".editar-tab").forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
-      document
-        .querySelectorAll(".editar-tab-panel")
-        .forEach((p) => (p.style.display = "none"));
+      document.querySelectorAll(".editar-tab-panel").forEach((p) => (p.style.display = "none"));
       document.getElementById("tab-" + tab.dataset.tab).style.display = "block";
     });
   });
 
-  /* ── Abrir / cerrar modal ── */
   function cerrarModalEditar() {
     modalEditar.style.display = "none";
   }
@@ -186,19 +163,16 @@ document.addEventListener("DOMContentLoaded", function () {
       fd.append("id_lista", ID_LISTA);
       fd.append("accion", "editar");
       fd.append("titulo", titulo);
-      fd.append(
-        "descripcion",
-        document.getElementById("editarDescripcion").value.trim(),
-      );
+      fd.append("descripcion", document.getElementById("editarDescripcion").value.trim());
       const visibilidad =
-        document.querySelector('input[name="editarVisibilidad"]:checked')
-          ?.value || "publica";
+        document.querySelector('input[name="editarVisibilidad"]:checked')?.value || "publica";
       fd.append("visibilidad", visibilidad);
       const archivo = editarPortadaInput.files[0];
       if (archivo) fd.append("imagen", archivo);
 
-      const res = await fetch("api/acciones-lista.php", {
+      const res = await fetch("ajax/acciones-lista.php", {
         method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
         body: fd,
       });
       const data = await res.json();
@@ -219,74 +193,65 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* ── Quitar película desde el modal ── */
-  document
-    .getElementById("editarPeliculasLista")
-    ?.addEventListener("click", async (e) => {
-      const btn = e.target.closest(".btn-quitar-pelicula-modal");
-      if (!btn) return;
-      if (!confirm("¿Quitar esta película de la lista?")) return;
+  document.getElementById("editarPeliculasLista")?.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".btn-quitar-pelicula-modal");
+    if (!btn) return;
+    if (!confirm("¿Quitar esta película de la lista?")) return;
 
-      const idPelicula = btn.dataset.idPelicula;
-      const fd = new FormData();
-      fd.append("id_lista", ID_LISTA);
-      fd.append("id_pelicula", idPelicula);
-      fd.append("accion", "quitar");
+    const idPelicula = btn.dataset.idPelicula;
+    const fd = new FormData();
+    fd.append("id_lista", ID_LISTA);
+    fd.append("id_pelicula", idPelicula);
+    fd.append("accion", "quitar");
 
-      try {
-        const res = await fetch("api/gestionar-lista-pelicula.php", {
-          method: "POST",
-          body: fd,
-        });
-        const data = await res.json();
+    try {
+      const res = await fetch("ajax/gestionar-lista-pelicula.php", {
+        method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+        body: fd,
+      });
+      const data = await res.json();
 
-        if (data.ok) {
-          document.getElementById(`editar-item-${idPelicula}`)?.remove();
-          document.getElementById(`card-pelicula-${idPelicula}`)?.remove();
+      if (data.ok) {
+        document.getElementById(`editar-item-${idPelicula}`)?.remove();
+        document.getElementById(`card-pelicula-${idPelicula}`)?.remove();
 
-          // Actualizar contadores
-          const cont = document.getElementById("contador-peliculas");
-          const contTab = document.getElementById("tab-contador-peliculas");
-          const newVal = Math.max(0, parseInt(cont?.textContent || "0") - 1);
-          if (cont) cont.textContent = newVal;
-          if (contTab) contTab.textContent = newVal;
+        const cont = document.getElementById("contador-peliculas");
+        const contTab = document.getElementById("tab-contador-peliculas");
+        const newVal = Math.max(0, parseInt(cont?.textContent || "0") - 1);
+        if (cont) cont.textContent = newVal;
+        if (contTab) contTab.textContent = newVal;
 
-          // Mensaje vacío en el panel del modal
-          if (
-            document.querySelectorAll(
-              "#editarPeliculasLista .editar-pelicula-item",
-            ).length === 0
-          ) {
-            const listaEl = document.getElementById("editarPeliculasLista");
-            if (listaEl)
-              listaEl.innerHTML =
-                '<p style="color:var(--text-secondary);text-align:center;padding:24px 0;">Esta lista ya no tiene películas.</p>';
-          }
-
-          // Mensaje vacío en el grid principal
-          if (document.querySelectorAll(".movie-card-lista").length === 0) {
-            document.getElementById("gridPeliculas").innerHTML =
-              '<p class="text-muted" id="msg-lista-vacia">Esta lista aún no tiene películas.</p>';
-          }
+        if (document.querySelectorAll("#editarPeliculasLista .editar-pelicula-item").length === 0) {
+          const listaEl = document.getElementById("editarPeliculasLista");
+          if (listaEl)
+            listaEl.innerHTML =
+              '<p style="color:var(--text-secondary);text-align:center;padding:24px 0;">Esta lista ya no tiene películas.</p>';
         }
-      } catch {
-        /* silencioso */
+
+        if (document.querySelectorAll(".movie-card-lista").length === 0) {
+          document.getElementById("gridPeliculas").innerHTML =
+            '<p class="text-muted" id="msg-lista-vacia">Esta lista aún no tiene películas.</p>';
+        }
       }
-    });
+    } catch {
+      /* silencioso */
+    }
+  });
 
   /* ── Eliminar lista entera ── */
   document.getElementById("btnEliminarLista")?.addEventListener("click", () => {
-    if (
-      !confirm(
-        "¿Seguro que quieres eliminar esta lista? Esta acción no se puede deshacer.",
-      )
-    )
-      return;
+    if (!confirm("¿Seguro que quieres eliminar esta lista? Esta acción no se puede deshacer.")) return;
 
     const fd = new FormData();
     fd.append("id_lista", ID_LISTA);
     fd.append("accion", "eliminar");
 
-    fetch("api/acciones-lista.php", { method: "POST", body: fd })
+    fetch("ajax/acciones-lista.php", {
+      method: "POST",
+      headers: { "X-Requested-With": "XMLHttpRequest" },
+      body: fd,
+    })
       .then((r) => r.json())
       .then((data) => {
         if (data.ok) window.location.href = "mis-listas.php";
@@ -295,18 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(() => alert("Error de conexión al eliminar."));
   });
 
-  /* ── Utilidad: escapar HTML ── */
   function escHtml(str) {
     return str.replace(
       /[&<>"']/g,
-      (m) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[m],
+      (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[m],
     );
   }
 });
