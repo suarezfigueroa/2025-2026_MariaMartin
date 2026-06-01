@@ -221,6 +221,10 @@ Backend
 Servidor
 │
 └── Apache + InfinityFree
+
+Técnicas de desarrollo
+│
+└── AJAX (comunicación asíncrona cliente-servidor)
 ```
 <br>
 
