@@ -648,7 +648,7 @@ HTTP 401 si el usuario no está autenticado.
 
 El proyecto está organizado con la siguiente estructura de carpetas:
 
-![Estructura de carpetas](doc/img/Sistema-carpetas.png)
+![Estructura de carpetas](doc/img/sistema-carpetas.jpeg)
 
 ```
 📁 TakeOne/
