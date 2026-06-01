@@ -509,8 +509,8 @@ pública de la aplicación.
 
 | Rol | Usuario | Contraseña |
 |-----|---------|------------|
-| Administrador | `adminmaria` | `Adminmaria1234` |
-| Usuario registrado | `mariamv` | `maria1234` |
+| Administrador | `adminmaria` | `Adminmaria1234!` |
+| Usuario registrado | `mariamv` | `Maria1234!` |
 ## 9. Lógica y codificación del proyecto
 
 ### 9.1. Principales procesos
