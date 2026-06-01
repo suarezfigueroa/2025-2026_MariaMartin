@@ -215,7 +215,6 @@ Frontend
 Backend
 │
 ├── PHP
-├── AJAX
 ├── MySQL
 │
 Servidor
@@ -567,13 +566,7 @@ de insertar el mensaje en la tabla `mensajes_grupo`. El endpoint devuelve el
 mensaje completo (con username y avatar) para que se muestre de forma inmediata 
 sin esperar al siguiente ciclo de polling.
 
-**Chat privado:** Funciona a través de `chat-privado-api.php`, que actúa como 
-una pequeña API REST con dos acciones. La acción `mensajes` (GET) devuelve los 
-mensajes nuevos entre los dos usuarios y marca como leídos los mensajes recibidos. 
-La acción `enviar` (POST) valida que ambos usuarios sean amigos antes de insertar 
-el mensaje, y devuelve el mensaje recién creado para renderizarlo al instante. En 
-ambos chats, los mensajes se muestran en burbujas diferenciadas según si el 
-mensaje es propio o ajeno.
+**Chat privado:** Funciona a través de `privado-mensajes-api.php`, que actúa como una pequeña API REST con dos acciones. La acción `mensajes` (GET) devuelve los mensajes nuevos entre los dos usuarios y marca como leídos los mensajes recibidos. La acción `enviar` (POST) valida que ambos usuarios sean amigos antes de insertar el mensaje, y devuelve el mensaje recién creado para renderizarlo al instante. En ambos chats, los mensajes se muestran en burbujas diferenciadas según si el mensaje es propio o ajeno.
 
 ---
 
@@ -658,15 +651,16 @@ El proyecto está organizado con la siguiente estructura de carpetas:
 ![Estructura de carpetas](doc/img/Sistema-carpetas.png)
 
 ```
-📁 takeone/
+📁 TakeOne/
 ├── 📁 admin/          → Paneles de administración
-├── 📁 api/            → Endpoints y lógica de la API interna
+├── 📁 ajax/            → Endpoints y lógica de la API interna
 ├── 📁 css/            → Hojas de estilo de usuario (styles.css), admin (admin.css) y responsive (responsive.css)
-├── 📁 img/            
+├── 📁 img/           → Imágenes del sitio (pósteres, logos, iconos)
 ├── 📁 includes/       → Archivos reutilizables (conexion.php, head.php, header.php, footer.php)
 ├── 📁 js/             → Scripts de JavaScript de la parte usuario
 ├── 📁 uploads/        → Imágenes subidas por los usuarios (avatares, portadas)
-└── 📄 index.php      → Página principal de acceso
+├── 📄 index.php      → Página principal de acceso
+└── 📄 + archivos raíz
 ```
 
 
