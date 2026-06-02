@@ -1057,16 +1057,43 @@ a { text-decoration: none; color: inherit; }
 .chat-msg__actions { display: flex; gap: 4px; margin-top: 4px; }
 
 /* Miembros grid */
-.miembros-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-                    gap: 1px; }
-.miembro-card   { background: #fff; display: flex; align-items: center; gap: 9px;
-                    padding: 10px 20px;}
-.miembro-card__info { flex: 0 1 auto; min-width: 0; margin-right: 18px;}
-.miembro-card__name { font-size: 12px; font-weight: 500; color: #1a1a18;
-                        white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.miembro-card__email { font-size: 11px; color: #888780; }
+.miembros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+}
 
-.miembro-card .admin-btn-xs .admin-btn-xs--danger {
+.miembro-card {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 20px;
+}
+
+.miembro-card__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.miembro-card__name {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1a1a18;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.miembro-card__email {
+    display: block;
+    font-size: 11px;
+    color: #888780;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.miembro-card .admin-btn-xs.admin-btn-xs--danger {
     margin-left: 0;
     padding: 7px 16px;
     border-radius: 10px;
