@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-06-2026 a las 13:44:38
+-- Tiempo de generación: 02-06-2026 a las 11:10:50
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -626,22 +626,25 @@ INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `titulo_original`, `anio`, `du
 (255, 'Election: La noche de las bestias', 'The Purge: Election Year', 2016, 105, 'Estados Unidos', 'Han pasado dos años desde que el ex-sargento de policía Leo Barnes (Frank Grillo) decidió no vengarse del hombre que mató a su hijo. Ahora Barnes dirige al equipo de seguridad que se encarga de proteger a la senadora Charlie Roan (Elizabeth Mitchell), una candidata a la Presidencia que reivindica la supresión de La Purga anual, que consiste en permitir, una noche al año, cualquier actividad criminal, incluído el asesinato. Roan considera que esta práctica perjudica sobre todo a los necesitados y a los pobres.', 6, 'https://media.themoviedb.org/t/p/w600_and_h900_face/h2dwdn1fDIgCQIaUOFNix87b7RH.jpg', 'https://image.tmdb.org/t/p/original/goGDfVd2EXkK4CY3RkWhVEDbgaz.jpg', 'https://www.youtube.com/watch?v=xyG7h1ILqo4', 'James DeMonaco', 'James DeMonaco', 'Blumhouse Productions, Platinum Dunes, Universal Pictures, Man in a Tree, Dentsu Inc, Fuji TV'),
 (256, 'Alicia en el país de las maravillas', 'Alice in Wonderland', 2010, 108, 'Estados Unidos', 'Inspirada en la obra homónima de Lewis Carroll. Alicia (Mia Wasikowska), una joven de 19 años, acude a una mansión victoriana para asistir a una fiesta de la alta sociedad. Cuando está a punto de recibir públicamente una propuesta de matrimonio, sale corriendo tras un conejo blanco y va a parar al País de las Maravillas, un lugar que había visitado diez años antes, aunque ya no lo recuerda. Ese país era un reino pacífico hasta que la Reina Roja (Helena Bonham Carter) derrocó a su hermana, la Reina Blanca (Anne Hathaway), pero las criaturas que viven en él, dispuestas a rebelarse, esperan contar con el apoyo de Alicia, a la que ayudan a recordar su primera visita al fantástico reino.', 6.4, 'https://media.themoviedb.org/t/p/w600_and_h900_face/sqOyCSgzLglxcR2y1boewr5Qufn.jpg', 'https://image.tmdb.org/t/p/original/lx3zZM1CM6RgEU3wKTXufBJQW2p.jpg', 'https://www.youtube.com/watch?v=Gyu7zvy8leg', 'Tim Burton', 'Linda Woolverton', 'Walt Disney Pictures, Tim Burton Productions, Zanuck Company, Roth Films, Team Todd'),
 (257, 'El laberinto del fauno', 'El laberinto del fauno', 2006, 112, 'España', 'Año 1944, posguerra española. Ofelia (Ivana Baquero) y su madre, Carmen (Ariadna Gil), que está embarazada, se trasladan a un pequeño pueblo al que ha sido destinado el nuevo marido de Carmen, Vidal (Sergi López), un cruel capitán del ejército franquista por el que la niña no siente ningún afecto. La misión de Vidal es acabar con los últimos miembros de la resistencia republicana que permanecen escondidos en los montes de la zona. En la zona viven Mercedes (Maribel Verdú), el ama de llaves, y el médico (Álex Angulo) que se hace cargo de Carmen. Una noche, Ofelia descubre las ruinas de un laberinto, y allí se encuentra con un fauno (Doug Jones), una extraña criatura que le hace una sorprendente revelación: ella es en realidad una princesa, la última de su estirpe, y los suyos la esperan desde hace mucho tiempo. Para poder regresar a su mágico reino, la niña deberá enfrentarse a tres pruebas.', 8.2, 'https://media.themoviedb.org/t/p/w600_and_h900_face/gWPkUFGlO7ZIiArUcWRBmvAwVjB.jpg', 'https://image.tmdb.org/t/p/original/bO3VVZHSCQm07uMKm1MPwMqmutL.jpg', 'https://www.youtube.com/watch?v=FGzvvUBXj5M', 'Guillermo del Toro', 'Guillermo del Toro', 'Estudios Picasso, Tequila Gang, Telecinco, Sententia Entertainment, Esperanto Filmoj, Wild Bunch'),
-(258, 'Confessions', 'Kokuhaku (Confessions)', 2010, 106, 'Japón', 'En un instituto, el último día de clase, una profesora se despide de sus alumnos y, además de anunciarles que deja la escuela, les confiesa que su hija de cuatro años que, aparentemente, murió ahogada en la piscina de la escuela, fue en realidad asesinada por dos estudiantes de esa misma clase. También les hace saber que ya ha puesto en marcha su venganza contra ellos.', 7.7, 'https://media.themoviedb.org/t/p/w600_and_h900_face/5LpU49phDgony1TEMOEL9igLlXv.jpg', 'https://image.tmdb.org/t/p/original/5T58RwyYLhQ0vICsAnP8TniBYwT.jpg', 'https://www.youtube.com/watch?v=dD1N5x1VGHY', 'Tetsuya Nakashima', 'Tetsuya Nakashima', 'DesperaDo, Hakuhodo DY Media Partners, Licri, Nippon Shuppan Hanbai, Sony Music Japan, TOHO, Yahoo Japan');
+(258, 'Confessions', 'Kokuhaku (Confessions)', 2010, 106, 'Japón', 'En un instituto, el último día de clase, una profesora se despide de sus alumnos y, además de anunciarles que deja la escuela, les confiesa que su hija de cuatro años que, aparentemente, murió ahogada en la piscina de la escuela, fue en realidad asesinada por dos estudiantes de esa misma clase. También les hace saber que ya ha puesto en marcha su venganza contra ellos.', 7.7, 'https://media.themoviedb.org/t/p/w600_and_h900_face/5LpU49phDgony1TEMOEL9igLlXv.jpg', 'https://image.tmdb.org/t/p/original/5T58RwyYLhQ0vICsAnP8TniBYwT.jpg', 'https://www.youtube.com/watch?v=dD1N5x1VGHY', 'Tetsuya Nakashima', 'Tetsuya Nakashima', 'DesperaDo, Hakuhodo DY Media Partners, Licri, Nippon Shuppan Hanbai, Sony Music Japan, TOHO, Yahoo Japan'),
+(259, 'El drama', 'The drama', 2026, 106, 'Estados Unidos', 'Una pareja, en los días previos a su boda, se enfrenta a una importante crisis cuando una inesperada revelación desbarata lo que uno de ellos creía saber sobre el otro.', 7.2, 'https://media.themoviedb.org/t/p/w600_and_h900_face/zgfBYGYCNcOZ51JDbr6tm45H8y0.jpg', 'https://image.tmdb.org/t/p/original/gGJOEUiMrwJOLfG9DMiq2wEp7RK.jpg', 'https://www.youtube.com/watch?v=pn8-dhxHVX8', 'Kristoffer Borgli', 'Kristoffer Borgli', 'A24, Square Peg, Live Free or Die Films'),
+(260, 'La silla', 'La silla', 2026, 76, 'España', 'Daniel Lonces es un joven escritor de novelas de misterio de éxito casado con una mujer que le quiere y con un hijo, pero su idílica existencia se verá inesperadamente truncada. Un día, realizando una pequeña prueba para una de sus novelas quedará accidentalmente atado a una silla sin posibilidad de soltarse. Poco a poco la situación se complicará de forma imprevisible y Daniel tendrá que luchar contra las circunstancias, en inferioridad de condiciones, para salvar su vida y la de los seres que ama.', 5.9, 'https://media.themoviedb.org/t/p/w600_and_h900_face/uC0yE8mjaEVFojev1taQiGDQTat.jpg', 'https://image.tmdb.org/t/p/original/xY71ZRWTbPQy5vSDMJ30dPO4KgI.jpg', 'https://www.youtube.com/watch?v=FPpWq5pQ4mw', 'Ángel de la Cruz', 'Ángel de la Cruz', 'AF Films, Ézaro Films'),
+(261, 'Corredora', 'Corredora', 2026, 96, 'España', 'Cris, una corredora de élite, sufre un brote psicótico que la obliga a alejarse de la alta competición. No todos a su alrededor podrán o sabrán cómo ayudarla pero Natalia, su hermana, será su refugio para aceptar su condición y redefinir su ritmo de vida.', 7.3, 'https://media.themoviedb.org/t/p/w600_and_h900_face/qghFPoXIqvgJiFaro5aaMqBol9X.jpg', 'https://image.tmdb.org/t/p/original/fmyhitmPLoOeUuhcc9j0yUqgC9m.jpg', 'https://www.youtube.com/watch?v=Qbz3DWjW-rg', 'Laura García Alonso', 'Laura García Alonso, Pol Cortecans', 'Distinto Films, Elastica Films, Dos Soles Media, RTVE, 3Cat'),
+(262, 'A la cara', 'A la cara', 2025, 95, 'España', 'Cuando Pedro abre la puerta de su casa para recibir a un posible compañero de piso, se sorprende al encontrarse con Lina, una famosa presentadora de televisión. La habitación no le interesa, solo quiere que Pedro diga en voz alta el mensaje de odio que le escribió en redes sociales. Lo que empieza como un choque violento se transforma en una extraña convivencia, donde ambos se convierten en espejos incómodos. Obligados a enfrentarse a sus propios demonios, Pedro y Lina descubren que estos los unen más de lo que creen.', 7.2, 'https://media.themoviedb.org/t/p/w600_and_h900_face/fzRQIB2FCCevWyBmcjwHVfvDPBl.jpg', '', 'https://www.youtube.com/watch?v=yqidCxR7NVk', 'Javier Marco', 'Javier Marco, Belén Sánchez-Arévalo', 'Bulletproof Cupid, Pecado Films, Lacima Producciones, Odessa Films, Langosta Films'),
+(263, 'Fleak', 'Fleak', 2025, 83, 'Finlandia', 'Lauri es un niño de 12 años que pierde la capacidad de caminar en un accidente. Por suerte, Fleak, una útil criatura peluda de otra dimensión aparece y se lleva Lauri a vivir una aventura de fantasía, en donde encuentra la forma de volver a caminar. A cambio, debe detener a un monstruo devorador creado por su propia sombra.', 6.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/trwCUWcdDm9dyhMAX71XoxQSLVv.jpg', 'https://image.tmdb.org/t/p/original/9trWVslglN1VdCrwNwqwWVZxBsh.jpg', 'https://www.youtube.com/watch?v=NLcqwMLxTWQ', 'Jens Møller', 'Antti Haikala, Melli Maikkula, Ilja Rautsi, Teemu Auersalo', 'Anima Vitae, Anima Point, Animoon, Impossible Dream Entertainment, Godo Films'),
+(264, 'El caso Hübener', 'Truth & Treason', 2025, 120, 'Estados Unidos', 'Helmuth Hübener, de 16 años, forma un grupo de resistencia con sus amigos Karl y Rudi tras presenciar la detención de su amigo judío por los nazis. Sus valientes acciones los llevan a ser juzgados por el máximo tribunal de la Alemania Nazi.', 7.1, 'https://media.themoviedb.org/t/p/w600_and_h900_face/jdugSr7F0kFavNqUaDytcJUgRGW.jpg', 'https://image.tmdb.org/t/p/original/yUBjDdAfZqg09f1Uu3Lu5cw2xPP.jpg', 'https://www.youtube.com/watch?v=g23dT8nUHyw', 'Matt Whitaker', 'Ethan Vincent, Matt Whitaker', 'Kaleidoscope Pictures, Baltic Film Services.');
 
 --
 -- Volcado de datos para la tabla `peliculas_en_cartelera`
 --
 
 INSERT INTO `peliculas_en_cartelera` (`id_pelicula`, `fecha_inicio`) VALUES
-(28, '2026-04-10'),
-(29, '2026-04-22'),
-(30, '2026-04-10'),
-(31, '2026-04-17'),
-(32, '2026-03-27'),
-(33, '2026-03-20'),
-(85, '2026-04-10'),
-(86, '2026-03-13'),
-(93, '2026-04-30');
+(259, '2026-05-29'),
+(260, '2026-05-29'),
+(261, '2026-05-29'),
+(262, '2026-05-29'),
+(263, '2026-05-29'),
+(264, '2026-05-29');
 
 --
 -- Volcado de datos para la tabla `peliculas_generos`
@@ -1233,7 +1236,18 @@ INSERT INTO `peliculas_generos` (`id_pelicula`, `id_genero`) VALUES
 (258, 6),
 (258, 10),
 (258, 14),
-(258, 17);
+(258, 17),
+(259, 4),
+(259, 6),
+(259, 11),
+(260, 10),
+(261, 6),
+(262, 6),
+(263, 2),
+(263, 3),
+(263, 7),
+(264, 6),
+(264, 10);
 
 --
 -- Volcado de datos para la tabla `peliculas_plataformas`
@@ -2187,7 +2201,25 @@ INSERT INTO `reparto` (`id_reparto`, `id_pelicula`, `nombre`, `personaje`) VALUE
 (820, 257, 'Maribel Verdú', 'Mercedes'),
 (821, 258, 'Takako Matsu', 'Yuko Moriguchi'),
 (822, 258, 'Masaki Okada', 'Yoshiteru Terada'),
-(823, 258, 'Yukito Nishii', 'Shuya Watanabe');
+(823, 258, 'Yukito Nishii', 'Shuya Watanabe'),
+(824, 259, 'Zandaya', 'Emma Harwood'),
+(825, 259, 'Robert Pattinson', 'Charlie Thompson'),
+(826, 259, 'Mamoudou Athie', 'Mike'),
+(827, 260, 'Jaime Lorente', 'Daniel Lonces'),
+(828, 260, 'Christina Ochoa', 'Irene'),
+(829, 260, 'Eva Rufo', ''),
+(830, 261, 'Alba Sáez', 'Cris'),
+(831, 261, 'Álex Brendemühl', 'Padre'),
+(832, 261, 'Marina', 'Salas'),
+(833, 262, 'Sonia Almarcha', 'Lina'),
+(834, 262, 'Manolo Solo', 'Pedro'),
+(835, 262, 'Roberto Álamo', 'Alberto'),
+(836, 263, 'Liva Guldberg Schrøder', 'Cecilie (voz)'),
+(837, 263, 'Mikkel Boe Følsgaard', 'Far (voz)'),
+(838, 263, 'Sigurd Philip Dalgas', 'Jan (voz)'),
+(839, 264, 'Ewan Horrocks', 'Helmuth Hübener'),
+(840, 264, 'Rupert Evans', 'Erwin Mussener'),
+(841, 264, 'Ferdinand McKay', 'Karl-Heinz Schnibbe');
 
 --
 -- Volcado de datos para la tabla `usuarios`
