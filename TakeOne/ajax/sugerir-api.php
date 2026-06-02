@@ -137,6 +137,8 @@ try {
             }
 
             $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+            // ── Intento 1: película que tenga TODOS los géneros seleccionados ─
             $stmt = $pdo->prepare("
                 SELECT p.id_pelicula, p.titulo, p.anio, p.sinopsis AS descripcion, p.poster,
                        GROUP_CONCAT(g2.nombre ORDER BY g2.nombre SEPARATOR ', ') AS generos_nombre
@@ -151,12 +153,41 @@ try {
                 )
                 AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
                 GROUP BY p.id_pelicula
+                HAVING COUNT(DISTINCT pg.id_genero) = ?
                 ORDER BY RAND()
                 LIMIT 1
             ");
-            $params = $id_usuario ? array_merge($ids, [$id_usuario]) : array_merge($ids, [0]);
+            $params = $id_usuario
+                ? array_merge($ids, [$id_usuario, count($ids)])
+                : array_merge($ids, [0, count($ids)]);
             $stmt->execute($params);
             $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // ── Intento 2 (fallback): película que tenga AL MENOS UNO ─────────
+            if (!$pelicula) {
+                $stmt = $pdo->prepare("
+                    SELECT p.id_pelicula, p.titulo, p.anio, p.sinopsis AS descripcion, p.poster,
+                           GROUP_CONCAT(g2.nombre ORDER BY g2.nombre SEPARATOR ', ') AS generos_nombre
+                    FROM peliculas p
+                    INNER JOIN peliculas_generos pg  ON p.id_pelicula = pg.id_pelicula
+                                                    AND pg.id_genero IN ($placeholders)
+                    LEFT JOIN  peliculas_generos pg2 ON p.id_pelicula = pg2.id_pelicula
+                    LEFT JOIN  generos g2            ON pg2.id_genero = g2.id_genero
+                    WHERE p.id_pelicula NOT IN (
+                        SELECT id_pelicula FROM usuarios_peliculas
+                        WHERE id_usuario = ? AND estado IN ('vista', 'favorita')
+                    )
+                    AND NOT (p.imdb IS NULL AND p.duracion IS NULL)
+                    GROUP BY p.id_pelicula
+                    ORDER BY RAND()
+                    LIMIT 1
+                ");
+                $params = $id_usuario
+                    ? array_merge($ids, [$id_usuario])
+                    : array_merge($ids, [0]);
+                $stmt->execute($params);
+                $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
             break;
 
         // ── 3. BASADA EN GUSTOS del usuario ─────────────────────────────────
