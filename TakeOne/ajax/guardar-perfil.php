@@ -136,6 +136,20 @@ try {
         $avatarPath = 'uploads/avatars/' . $fileName;
     }
 
+    // Comprobar username único
+    $stmtCheckUsername = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE username = :username AND id_usuario != :id_usuario LIMIT 1");
+    $stmtCheckUsername->execute(['username' => $username, 'id_usuario' => $idUsuario]);
+    if ($stmtCheckUsername->fetchColumn()) {
+        responderError('ese nombre de usuario ya está en uso.');
+    }
+
+    // Comprobar email único
+    $stmtCheckEmail = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND id_usuario != :id_usuario LIMIT 1");
+    $stmtCheckEmail->execute(['email' => $email, 'id_usuario' => $idUsuario]);
+    if ($stmtCheckEmail->fetchColumn()) {
+        responderError('ese correo electrónico ya está registrado.');
+    }
+
     $pdo->beginTransaction();
 
     $sqlUpdate = "UPDATE usuarios
