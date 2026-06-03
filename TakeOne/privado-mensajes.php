@@ -266,7 +266,7 @@ $inicialOtro = strtoupper(substr($otro['username'], 0, 1));
             }
 
             scrollAbajo(true);
-            intervalo = setInterval(cargarMensajes, 4000);
+            intervalo = setInterval(cargarMensajes, 1500);
         })();
     </script>
 
