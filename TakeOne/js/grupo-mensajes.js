@@ -197,7 +197,7 @@ if (ES_MIEMBRO) {
 
   // ── Arrancar ───────────────────────────────────────────────
   cargarMensajes().then(() => {
-    pollingTimer = setInterval(polling, 3000);
+    pollingTimer = setInterval(polling, 1500);
   });
 }
 
