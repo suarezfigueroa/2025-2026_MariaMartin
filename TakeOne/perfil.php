@@ -47,7 +47,7 @@ $stmtGeneros->execute(['id_usuario' => $idUsuario]);
 $generosFavoritos = $stmtGeneros->fetchAll(PDO::FETCH_ASSOC);
 
 $avatar   = !empty($usuario['avatar'])    ? $usuario['avatar']    : 'img/default-avatar.png';
-$bio      = !empty($usuario['biografia']) ? $usuario['biografia'] : 'Todavía no has escrito tu biografía.';
+$bio = $usuario['biografia'] ?? '';
 $localidad = !empty($usuario['localidad']) ? $usuario['localidad'] : '';
 
 ?>
@@ -74,7 +74,9 @@ $localidad = !empty($usuario['localidad']) ? $usuario['localidad'] : '';
 
                     <div class="perfil-info">
                         <h1 class="perfil-username"><?= htmlspecialchars($usuario['username']) ?></h1>
-                        <p class="perfil-tagline"><?= htmlspecialchars($bio) ?></p>
+                        <?php if (!empty($bio)): ?>
+                            <p class="perfil-tagline"><?= htmlspecialchars($bio) ?></p>
+                        <?php endif; ?>
 
                         <?php if (!empty($localidad)): ?>
                             <p class="perfil-location">

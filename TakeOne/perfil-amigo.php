@@ -119,11 +119,9 @@ $amigosDelVisto = $stmtAmigosVisto->fetchAll(PDO::FETCH_ASSOC);
 
           <div class="perfil-info">
             <h1 class="perfil-username"><?= htmlspecialchars($amigo['username']) ?></h1>
-            <p class="perfil-tagline">
-              <?= !empty($amigo['biografia'])
-                ? htmlspecialchars($amigo['biografia'])
-                : 'Este usuario todavía no ha escrito su biografía.' ?>
-            </p>
+            <?php if (!empty($amigo['biografia'])): ?>
+              <p class="perfil-tagline"><?= htmlspecialchars($amigo['biografia']) ?></p>
+            <?php endif; ?>
             <?php if (!empty($amigo['localidad'])): ?>
               <p class="perfil-location">
                 <span class="material-icons-outlined">location_on</span>
