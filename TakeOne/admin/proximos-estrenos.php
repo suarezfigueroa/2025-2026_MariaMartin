@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
         if ($titulo === '' || $fecha_estreno === '') {
             $_SESSION['msg_error'] = 'Debes seleccionar una película y una fecha.';
+        } elseif ((int)$pdo->query("SELECT COUNT(*) FROM proximos_estrenos WHERE fecha_estreno >= CURDATE()")->fetchColumn() >= 10) {
+            $_SESSION['msg_error'] = 'Solo puedes tener un máximo de 10 próximos estrenos. Elimina alguno antes de añadir otro.';
         } else {
             $stmt = $pdo->prepare("
                 INSERT INTO proximos_estrenos (id_pelicula, titulo, poster, fecha_estreno)

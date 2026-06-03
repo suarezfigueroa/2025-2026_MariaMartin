@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
         if ($check->fetchColumn()) {
             $_SESSION['msg_error'] = 'Esa película ya está en cartelera.';
+        } elseif ((int)$pdo->query("SELECT COUNT(*) FROM peliculas_en_cartelera")->fetchColumn() >= 10) {
+            $_SESSION['msg_error'] = 'Solo puedes tener un máximo de 10 películas en cartelera. Retira alguna antes de añadir otra.';
         } else {
             $stmt = $pdo->prepare("INSERT INTO peliculas_en_cartelera (id_pelicula, fecha_inicio) VALUES (?, ?)");
             $stmt->execute([$id_pelicula, $fecha_inicio]);

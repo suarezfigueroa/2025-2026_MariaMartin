@@ -19,6 +19,7 @@ $stmtCartelera = $pdo->query("
   FROM peliculas p
   INNER JOIN peliculas_en_cartelera c ON p.id_pelicula = c.id_pelicula
   ORDER BY c.fecha_inicio DESC
+  LIMIT 10
 ");
 $cartelera = $stmtCartelera->fetchAll(PDO::FETCH_ASSOC);
 
@@ -28,6 +29,7 @@ $stmtEstrenos = $pdo->query("
   FROM proximos_estrenos e
   WHERE e.fecha_estreno >= CURDATE()
   ORDER BY e.fecha_estreno ASC
+  LIMIT 10
 ");
 $estrenos = $stmtEstrenos->fetchAll(PDO::FETCH_ASSOC);
 
