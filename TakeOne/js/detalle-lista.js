@@ -230,8 +230,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (document.querySelectorAll(".movie-card-lista").length === 0) {
-          document.getElementById("gridPeliculas").innerHTML =
-            '<p class="text-muted" id="msg-lista-vacia">Esta lista aún no tiene películas.</p>';
+          document.getElementById("gridPeliculas").innerHTML = `
+          <div id="msg-lista-vacia" style="padding:2rem 0;">
+            <p style="color:white;margin-bottom:1rem;">Esta lista aún no tiene películas.</p>
+            <a href="peliculas.php" class="btn-lista-action btn-editar-lista" style="display:inline-flex;text-decoration:none;">
+              <span class="material-icons-outlined">movie</span>
+              <span>Ir a Películas</span>
+            </a>
+          </div>`;
         }
       }
     } catch {

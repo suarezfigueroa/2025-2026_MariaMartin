@@ -176,10 +176,15 @@
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <p id="msg-lista-vacia" style="color: white; max-width: 400px;">
-                            Esta lista aún no tiene películas.
-                            <?= $es_propietario ? 'Busca en la sección "Películas" para empezar.' : '' ?>
-                        </p>
+                        <div id="msg-lista-vacia" style="padding: 2rem 0;">
+                            <p style="color: white; margin-bottom: 1rem;">Esta lista aún no tiene películas.</p>
+                            <?php if ($es_propietario): ?>
+                                <a href="peliculas.php" class="btn-lista-action btn-editar-lista" style="display:inline-flex; text-decoration:none;">
+                                    <span class="material-icons-outlined">movie</span>
+                                    <span>Ir a Películas</span>
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
