@@ -555,7 +555,7 @@ usa para actualizar la interfaz sin recargar la página.
 #### Chat en tiempo real (grupos y privado)
 
 Tanto el chat de grupo como el chat privado funcionan mediante **polling**: el 
-frontend realiza peticiones AJAX periódicas cada 4 segundos al endpoint 
+frontend realiza peticiones AJAX periódicas cada 1.5 segundos al endpoint 
 correspondiente, solicitando únicamente los mensajes nuevos a partir del último 
 `id_mensaje` recibido. Esto evita descargar mensajes ya mostrados y reduce la 
 carga sobre el servidor.
