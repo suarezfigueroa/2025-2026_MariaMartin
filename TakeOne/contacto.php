@@ -106,11 +106,7 @@
                   </label>
                   <input type="email" id="email" name="email"
                     value="<?= $email ?>"
-                    <?php if ($usuarioLogueado): ?>
-                    readonly class="input-readonly"
-                    <?php else: ?>
-                    placeholder="tucorreo@ejemplo.com" required
-                    <?php endif; ?> />
+                    placeholder="tucorreo@ejemplo.com" required />
                 </div>
 
                 <div class="form-group-contacto">
